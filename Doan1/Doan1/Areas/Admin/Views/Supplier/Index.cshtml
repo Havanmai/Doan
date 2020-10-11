@@ -1,0 +1,84 @@
+﻿@model PagedList.IPagedList<Model.EF.Supplier>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section header{
+    Trang Thông Tin Nhà Cung Cấp }
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    <button type="button" class="btn btn-primary">
+        @Html.ActionLink("Thêm mới", "Create")
+
+    </button>
+</p>
+<table class="table  table-condensed table-striped table-bordered " style="border-collapse:collapse;">
+    <tr>
+        <th style="border: 1px solid #ccc;">
+            STT
+        </th>
+        <th style="border: 1px solid #ccc;">
+            Tên Nhà Cung Cấp
+        </th>
+        <th style="border: 1px solid #ccc;">
+            Địa Chỉ
+        </th>
+        <th style="border: 1px solid #ccc;">
+            Số điện thoại
+        </th>
+        <th style="border: 1px solid #ccc;">
+            Email
+        </th>
+        <th style="border: 1px solid #ccc;">
+            Ngày tạo
+        </th>
+        <th style="border: 1px solid #ccc;">
+            Trạng thái
+        </th>
+        <th style="width:200px; border: 1px solid #ccc;">Xử lý</th>
+    </tr>
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            <td style="border: 1px solid #ccc;">
+                @(i+1)
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @Model[i].NameSupplier
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @Model[i].Address
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @Model[i].PhoneNumber
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @Model[i].Email
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @Model[i].CreateDate
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @Model[i].Status
+            </td>
+            <td style="border: 1px solid #ccc;">
+                <button type="button" class="btn btn-warning">@Html.ActionLink("Edit", "Edit", @Model[i].IdSupplier)</button>
+                |
+                @*//@Html.ActionLink("Details", "Details", new { id = item.IdSupplier })*@
+                <button type="button" class="btn btn-danger">@Html.ActionLink("Delete", "Delete", @Model[i].IdSupplier)</button>
+
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+

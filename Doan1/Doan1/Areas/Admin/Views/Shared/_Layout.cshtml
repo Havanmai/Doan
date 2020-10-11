@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#2e8cc2">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+    <title>Giao diện quản trị</title>
+
+    <!-- Font awesome -->
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="~/Assets/admin/fontawesome/css/all.css">
+     @*Main CSS*@ 
+    <link href="~/Assets/admin/css/admin4b.min.css" rel="stylesheet">
+    <link href="~/Assets/admin/css/custom.css" rel="stylesheet">
+    
+   
+</head>
+
+<body>
+    <div class="app">
+        <!---------------->
+        <!-- Thanh menu -->
+        <!---------------->
+        <div class="app-sidebar">
+            <div class="sidebar-header">
+                <img class="avatar" src="~/Assets/admin/img/avatar.png" />
+                <div class="username">
+                    <span>Cúc cu</span>
+                    <small>blabla@gmail.com</small>
+                </div>
+            </div>
+            <div id="sidebar-nav" class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="sidebar-nav-icon fa fa-rocket">
+                            </span> <span class="sidebar-nav-text">Trang bắt đầu</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <span class="sidebar-nav-header">Chức năng</span>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="sidebar-nav-icon fa fa-edit">
+                            </span> <span class="sidebar-nav-text">Bài viết</span>
+                        </a>
+                    </li>
+                    <li>
+
+                        <a href="#device-controls" data-toggle="collapse">
+                            <span class="sidebar-nav-icon fa fa-list"></span>
+                            <span class="sidebar-nav-text">Quản lý danh mục</span>
+                        </a>
+                        <ul id="device-controls" class="collapse" data-parent="#sidebar-nav">
+                            <li>
+                                <a> @Html.ActionLink("Quản lý nhà cung cấp", "Index","Supplier") </a>
+                            </li>
+                            <li>
+                                <a href="#">Quản lý khách hàng</a>
+                            </li>
+                            <li>
+                                <a href="#">Quản lý nhân viên</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="#device-controls1" data-toggle="collapse">
+                            <span class="sidebar-nav-icon fa fa-images"></span>
+                            <span class="sidebar-nav-text">Quản lý sản phẩm</span>
+                        </a>
+                        <ul id="device-controls1" class="collapse" data-parent="#sidebar-nav">
+                            <li>
+                                <a href="#">Quản lý nhóm sản phẩm </a>
+                            </li>
+                            <li>
+                                <a href="#">Quản lý loại sản phẩm</a>
+                            </li>
+                            <li>
+                                <a href="#">Quản lý chi tiết sản phẩm</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="sidebar-nav-icon fa fa-comments"></span>
+                            <span class="sidebar-nav-text">Bình luận</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <hr />
+                <span class="sidebar-nav-header">Tài khoản</span>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="sidebar-nav-icon fa fa-users"></span>
+                            <span class="sidebar-nav-text">Cấp tài khoản </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="sidebar-nav-icon fa fa-key"></span>
+                            <span class="sidebar-nav-text">Đổi mật khẩu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="sidebar-nav-icon fa fa-power-off"></span>
+                            <span class="sidebar-nav-text">Đăng xuất</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-------------->
+        <!-- Nội dung -->
+        <!-------------->
+        <div class="app-content">
+            <div class="content-header">
+                <nav class="navbar navbar-expand navbar-light bg-white">
+                    <div class="navbar-brand">
+                        <button type="button" class="btn btn-sidebar" data-toggle="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <span class="pr-2">Đây là trang blog của ... <i class="fa fa-pray"></i></span>
+                    </div>
+
+                </nav>
+                <nav>
+                    <span class="breadcrumb"><h3>@RenderSection("header", required: true)</h3></span>
+                </nav>
+            </div>
+            <div class="content-body">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-body">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main js -->
+    @*<script src="~/Assets/admin/js/jquery-3.4.1.min.js"></script>*@
+    <script src="~/Assets/admin/js/admin4b.min.js"></script>
+     @*Function template file*@ 
+    <script src="~/Assets/admin/js/docs.js"></script>
+
+</body>
+
+</html>

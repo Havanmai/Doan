@@ -15,7 +15,7 @@ namespace Model.EF
         [StringLength(250)]
         public string NameStaff { get; set; }
 
-        public bool? Gender { get; set; }
+        public bool Gender { get; set; }
 
         [StringLength(250)]
         public string Office { get; set; }
@@ -29,6 +29,6 @@ namespace Model.EF
         [StringLength(250)]
         public string Address { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
     }
 }

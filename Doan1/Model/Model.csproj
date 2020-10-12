@@ -62,6 +62,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Dao\AcountDao.cs" />
     <Compile Include="Dao\CustomerDao.cs" />
+    <Compile Include="Dao\StaffDao.cs" />
     <Compile Include="Dao\SupplierDao.cs" />
     <Compile Include="EF\Account.cs" />
     <Compile Include="EF\Category.cs" />

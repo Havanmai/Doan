@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -13,17 +13,22 @@ namespace Model.EF
         public long IdCustomer { get; set; }
 
         [StringLength(250)]
+        [Display (Name ="Tên Khách Hàng :")]
         public string CustomerName { get; set; }
 
-        public bool? Gender { get; set; }
+        [Display(Name = "Giới tính :")]
+        public bool Gender { get; set; }
 
         [StringLength(10)]
+        [Display(Name = "SDT :")]
         public string PhoneNumber { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Email :")]
         public string Email { get; set; }
 
         [StringLength(250)]
+        [Display(Name = "Địa chỉ :")]
         public string Address { get; set; }
 
         [StringLength(250)]
@@ -32,9 +37,10 @@ namespace Model.EF
         [StringLength(250)]
         public string Password { get; set; }
 
+        [Display(Name = "Ngày tạo :")]
         public DateTime? CreateDay { get; set; }
 
-        [StringLength(10)]
-        public string Status { get; set; }
+        [Display(Name = "Trạng thái  :")]
+        public bool Status { get; set; }
     }
 }

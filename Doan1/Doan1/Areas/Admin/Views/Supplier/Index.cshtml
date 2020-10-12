@@ -6,79 +6,121 @@
 }
 @section header{
     Trang Thông Tin Nhà Cung Cấp }
-
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-    <button type="button" class="btn btn-primary">
-        @Html.ActionLink("Thêm mới", "Create")
-
-    </button>
-</p>
-<table class="table  table-condensed table-striped table-bordered " style="border-collapse:collapse;">
-    <tr>
-        <th style="border: 1px solid #ccc;">
-            STT
-        </th>
-        <th style="border: 1px solid #ccc;">
-            Tên Nhà Cung Cấp
-        </th>
-        <th style="border: 1px solid #ccc;">
-            Địa Chỉ
-        </th>
-        <th style="border: 1px solid #ccc;">
-            Số điện thoại
-        </th>
-        <th style="border: 1px solid #ccc;">
-            Email
-        </th>
-        <th style="border: 1px solid #ccc;">
-            Ngày tạo
-        </th>
-        <th style="border: 1px solid #ccc;">
-            Trạng thái
-        </th>
-        <th style="width:200px; border: 1px solid #ccc;">Xử lý</th>
-    </tr>
-
-    @for (int i = 0; i < Model.Count; i++)
-    {
-        <tr>
-            <td style="border: 1px solid #ccc;">
-                @(i+1)
-            </td>
-            <td style="border: 1px solid #ccc;">
-                @Model[i].NameSupplier
-            </td>
-            <td style="border: 1px solid #ccc;">
-                @Model[i].Address
-            </td>
-            <td style="border: 1px solid #ccc;">
-                @Model[i].PhoneNumber
-            </td>
-            <td style="border: 1px solid #ccc;">
-                @Model[i].Email
-            </td>
-            <td style="border: 1px solid #ccc;">
-                @Model[i].CreateDate
-            </td>
-            <td style="border: 1px solid #ccc;">
-                @Model[i].Status
-            </td>
-            <td style="border: 1px solid #ccc;">
-                <button type="button" class="btn btn-warning">@Html.ActionLink("Edit", "Edit", @Model[i].IdSupplier)</button>
-                |
-                @*//@Html.ActionLink("Details", "Details", new { id = item.IdSupplier })*@
-                <button type="button" class="btn btn-danger">@Html.ActionLink("Delete", "Delete", @Model[i].IdSupplier)</button>
-
-            </td>
-        </tr>
-    }
-
-</table>
-<br />
-
-Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+<div>
+    <div>
+        <p>
+            @using (Html.BeginForm("Index", "Supplier", FormMethod.Get))
+            {
+                <div style="width:100%; height:50px; " id="search">
 
 
+                    <input type="text" value="@ViewBag.SearchString" name="searchString" style="width:20%; height:50px; margin-left:1100px; margin-right:20px;" />
+                    <button type="submit" class="btn btn-secondary" style="height:50px;">Tìm Kiếm</button>
+
+
+
+                </div>
+            }
+            @*@Html.ActionLink("Create New", "Create")*@
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Thêm mới", "Create")
+
+            </button>
+
+        </p>
+        
+    </div>
+    <div>
+        <table class="table  table-condensed table-striped table-bordered " style="border-collapse:collapse;">
+            <tr>
+                <th style="border: 1px solid #ccc;">
+                    STT
+                </th>
+                <th style="border: 1px solid #ccc;">
+                    Tên Nhà Cung Cấp
+                </th>
+                <th style="border: 1px solid #ccc;">
+                    Địa Chỉ
+                </th>
+                <th style="border: 1px solid #ccc;">
+                    Số điện thoại
+                </th>
+                <th style="border: 1px solid #ccc;">
+                    Email
+                </th>
+                <th style="border: 1px solid #ccc;">
+                    Ngày tạo
+                </th>
+                <th style="border: 1px solid #ccc;">
+                    Ngày cập nhật gần nhất
+                </th>
+                <th style="border: 1px solid #ccc;">
+                    Trạng thái
+                </th>
+                <th style="width:200px; border: 1px solid #ccc;">Xử lý</th>
+            </tr>
+
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr id="row_Model[i].IdSupplier">
+                    <td style="border: 1px solid #ccc;">
+                        @(i+1)
+                    </td>
+                    <td style="border: 1px solid #ccc;">
+                        @Model[i].NameSupplier
+                    </td>
+                    <td style="border: 1px solid #ccc;">
+                        @Model[i].Address
+                    </td>
+                    <td style="border: 1px solid #ccc;">
+                        @Model[i].PhoneNumber
+                    </td>
+                    <td style="border: 1px solid #ccc;">
+                        @Model[i].Email
+                    </td>
+                    <td style="border: 1px solid #ccc;">
+                        @Model[i].CreateDate
+                    </td>
+                    <td style="border: 1px solid #ccc;">
+                        @Model[i].UpdateDay
+                    </td>
+                    <td style="border: 1px solid #ccc;">
+
+                        @if (@Model[i].Status)
+                        {
+                            <p>Đang hợp tác</p>
+                        }
+                        else
+                        {
+                            <p>Tạm ngưng hợp tác</p>
+                        }
+
+                    </td>
+                    <td style="border: 1px solid #ccc;">
+                        
+                        @Html.ActionLink("Edit", "Edit", new { id = Model[i].IdSupplier }, new { @class = "btn btn-warning" })
+                        |
+                        <button type="button" class="btn btn-danger">
+                            @Ajax.ActionLink("Xóa", "Delete", new { id = Model[i].IdSupplier }, new AjaxOptions
+                       {
+                           Confirm = "Bạn có muốn xóa bản ghi này không?",
+                           OnComplete = "$('#row_" + Model[i].IdSupplier + "').remove();",
+                           HttpMethod = "Delete"
+                       })
+                        </button>
+                        
+
+                    </td>
+             </tr>
+            }
+
+        </table>
+    </div>
+    <div>
+
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page,@searchString=@ViewBag.SearchString }))
+    </div>
+
+</div>

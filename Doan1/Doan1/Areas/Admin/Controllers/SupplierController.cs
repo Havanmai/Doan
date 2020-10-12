@@ -12,7 +12,8 @@ namespace Doan1.Areas.Admin.Controllers
     public class SupplierController : Controller
     {
         // GET: Admin/Supplier
-        public ActionResult Index(int page= 1, int pageSize=10)
+        
+        public ActionResult Index(string searchString ,int page = 1, int pageSize = 10)
         {
 
             //var model = new List<Supplier>();
@@ -21,15 +22,19 @@ namespace Doan1.Areas.Admin.Controllers
             //    model = db.Supplier.ToList();
             //}
             var dao = new SupplierDao();
-            var model = dao.ListAllPaging(page, pageSize);
+            var model = dao.ListAllPaging(searchString,page, pageSize);
+            ViewBag.SearchString = searchString;
             return View(model);
+
         }
+       
         [HttpGet]// lấy giao diện
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        
         public ActionResult Create(Supplier supplier)
         {
             var dao = new SupplierDao();
@@ -43,7 +48,39 @@ namespace Doan1.Areas.Admin.Controllers
                 ModelState.AddModelError("", "Thêm không thành công");
             }
             return View("Index");
-        }
 
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var supplier = new SupplierDao().ViewDetail(id);
+            return View(supplier);
+        }
+        [HttpPost]
+        public ActionResult Edit(Supplier supplier)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new SupplierDao();
+                bool result = dao.Update(supplier);
+                if (result== true)
+                {
+                    return RedirectToAction("Index", "Supplier");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Cập nhật không thành công");
+                }
+            }
+           
+            return View("Index");
+        }
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            new SupplierDao().Delete(id);
+
+            return RedirectToAction("Index", "Supplier");
+        }
     }
 }

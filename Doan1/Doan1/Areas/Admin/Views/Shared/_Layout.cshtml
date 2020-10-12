@@ -55,10 +55,10 @@
                         </a>
                         <ul id="device-controls" class="collapse" data-parent="#sidebar-nav">
                             <li>
-                                <a> @Html.ActionLink("Quản lý nhà cung cấp", "Index","Supplier") </a>
+                                <a> @Html.ActionLink("Quản lý nhà cung cấp", "Index", "Supplier") </a>
                             </li>
                             <li>
-                                <a href="#">Quản lý khách hàng</a>
+                                <a >@Html.ActionLink("Quản lý khách hàng", "Index", "Customer")</a>
                             </li>
                             <li>
                                 <a href="#">Quản lý nhân viên</a>
@@ -146,9 +146,12 @@
     </div>
 
     <!-- Main js -->
+    <script src="~/Assets/admin/vendor/jquery/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     @*<script src="~/Assets/admin/js/jquery-3.4.1.min.js"></script>*@
     <script src="~/Assets/admin/js/admin4b.min.js"></script>
-     @*Function template file*@ 
+    @*Function template file*@
     <script src="~/Assets/admin/js/docs.js"></script>
 
 </body>

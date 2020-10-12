@@ -1,0 +1,129 @@
+﻿@model PagedList.IPagedList<Model.EF.Customer>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section header{
+    Danh sách khách hàng}
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<div>
+    <p>
+        @using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+        {
+            <div style="width:100%; height:50px; " id="search">
+
+
+                <input type="text" value="@ViewBag.SearchString" name="searchString" style="width:20%; height:50px; margin-left:1100px; margin-right:20px;" />
+                <button type="submit" class="btn btn-secondary" style="height:50px;">Tìm Kiếm</button>
+
+
+
+            </div>
+        }
+
+    </p>
+
+</div>
+<table class="table  table-condensed table-striped table-bordered " style="border-collapse:collapse;">
+    <tr>
+        <th style="border: 1px solid #ccc;">
+           STT
+        </th>
+        <th style="border: 1px solid #ccc;">
+            Tên Khách Hàng
+        </th>
+        <th style="border: 1px solid #ccc;">
+            Giới Tính
+        </th>
+        <th style="border: 1px solid #ccc;">
+            SDT
+        </th>
+        <th style="border: 1px solid #ccc;">
+            Email
+        </th>
+        <th style="border: 1px solid #ccc;">
+            Địa Chỉ
+
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>*@
+        <th style="border: 1px solid #ccc;">
+            Ngày tạo
+        </th>
+        <th style="border: 1px solid #ccc;">
+            Trạng Thái
+        </th>
+        <th style="border: 1px solid #ccc;"> Xử lý</th>
+    </tr>
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+<tr>
+    <td style="border: 1px solid #ccc;">
+        @(i+1)
+    </td>
+    <td style="border: 1px solid #ccc;">
+        @Model[i].CustomerName
+    </td>
+    <td style="border: 1px solid #ccc;">
+        @if (@Model[i].Gender)
+        {
+            <p>Nam</p>
+        }
+        else
+        {
+            <p>Nữ</p>
+        }
+    </td>
+    <td style="border: 1px solid #ccc;">
+        @Model[i].PhoneNumber
+    </td>
+    <td style="border: 1px solid #ccc;">
+        @Model[i].Email
+    </td>
+    <td style="border: 1px solid #ccc;">
+        @Model[i].Address
+    </td>
+    @*<td>
+            @Model[i].UserName
+        </td>
+        <td>
+            @Model[i].Password
+        </td>*@
+    <td style="border: 1px solid #ccc;">
+        @Model[i].CreateDay
+    </td>
+    <td style="border: 1px solid #ccc;">
+        @if (@Model[i].Status)
+        {
+            <p>Hoạt động</p>
+        }
+        else
+        {
+            <p>Bị Khóa</p>
+        }
+    </td>
+    <td style="border: 1px solid #ccc;">
+        @Html.ActionLink("Edit", "Edit", new { id = @Model[i].IdCustomer }, new { @class = "btn btn-warning" })
+        @*@Html.ActionLink("Details", "Details", new { id= @Model[i].IdCustomer }) |
+            @Html.ActionLink("Delete", "Delete", new { id= @Model[i].IdCustomer })*@
+    </td>
+</tr>
+    }
+
+</table>
+<div>
+
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+</div>

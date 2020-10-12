@@ -59,14 +59,14 @@
     </div>
 </div>
 <div class="row">
-    <div class="col">
+    @*<div class="col">
     <div class="form-group">
     @Html.LabelFor(model => model.CreateDate, htmlAttributes: new { @class = "control-label col-md-10" })
     <div class="col-md-10">
         @Html.EditorFor(model => model.CreateDate, new { htmlAttributes = new { @class = "form-control" } })
         @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
     </div>
-</div></div>
+</div></div>*@
     <div class="col">
         <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-10" })
@@ -83,13 +83,15 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
-            <input type="submit" value="Create" class="btn btn-primary" />
+            <input type="submit" value="Thêm mới" class="btn btn-primary" />
+            <button type="reset" class="btn btn-dark">Hủy</button>
         </div>
     </div>
 </div>
     }
 
-    <div>
-        <button type="button" class="btn btn-success">@Html.ActionLink("Back to List", "Index")</button>
-        
-    </div>
+<div>
+    <button type="button" class="btn btn-success">@Html.ActionLink("Back to List", "Index")</button>
+    
+
+</div>

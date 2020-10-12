@@ -13,16 +13,16 @@ namespace Model.EF
         public int IdAccount { get; set; }
 
         [StringLength(50)]
-        public string Username { get; set; }
+        public virtual string Username { get; set; }
 
         [StringLength(50)]
-        public string Password { get; set; }
+        public virtual string Password { get; set; }
 
-        public int? IdStaff { get; set; }
+        public virtual int? IdStaff { get; set; }
 
         [StringLength(50)]
-        public string Access { get; set; }
+        public virtual string Access { get; set; }
 
-        public bool Status { get; set; }
+        public virtual bool Status { get; set; }
     }
 }

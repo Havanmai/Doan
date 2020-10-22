@@ -58,10 +58,10 @@
                                 <a> @Html.ActionLink("Quản lý nhà cung cấp", "Index", "Supplier") </a>
                             </li>
                             <li>
-                                <a >@Html.ActionLink("Quản lý khách hàng", "Index", "Customer")</a>
+                                <a>@Html.ActionLink("Quản lý khách hàng", "Index", "Customer")</a>
                             </li>
                             <li>
-                                <a >@Html.ActionLink("Quản lý nhân viên", "Index", "Staff")</a>
+                                <a>@Html.ActionLink("Quản lý nhân viên", "Index", "Staff")</a>
                             </li>
                         </ul>
 
@@ -79,7 +79,7 @@
                                 <a href="#">Quản lý loại sản phẩm</a>
                             </li>
                             <li>
-                                <a href="#">Quản lý chi tiết sản phẩm</a>
+                                <a>@Html.ActionLink("Quản lý sản phẩm", "Index", "Product")</a>
                             </li>
                         </ul>
                     </li>
@@ -146,13 +146,17 @@
     </div>
 
     <!-- Main js -->
-    <script src="~/Assets/admin/vendor/jquery/jquery.min.js"></script>
-
+    <script src="~/Assets/admin/js/jquery-3.4.1.min.js"></script>
+    @*<script src="~/Assets/admin/vendor/jquery/jquery.min.js"></script>*@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    @*<script src="~/Assets/admin/js/jquery-3.4.1.min.js"></script>*@
+    @*<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
     <script src="~/Assets/admin/js/admin4b.min.js"></script>
     @*Function template file*@
+    <script src="~/Assets/admin/js/plugins/ckeditor/ckeditor.js"></script>
     <script src="~/Assets/admin/js/docs.js"></script>
+
+    @RenderSection("Scripts", true)
 
 </body>
 

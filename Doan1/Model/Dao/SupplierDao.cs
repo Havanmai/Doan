@@ -30,7 +30,7 @@ namespace Model.Dao
             {
                 model = model.Where(x => x.NameSupplier.Contains(searchString) || x.PhoneNumber.Contains(searchString));
             }
-            return model.OrderByDescending(x => x.CreateDate).ToPagedList(page, pageSize);
+            return model.OrderByDescending(x => x.NameSupplier).ToPagedList(page, pageSize);
         }
        
         public Supplier ViewDetail(int id)
@@ -54,7 +54,7 @@ namespace Model.Dao
                 db.SaveChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch(Exception )
             {
                 return false;
             }
@@ -69,7 +69,7 @@ namespace Model.Dao
                 db.SaveChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return false;
             }

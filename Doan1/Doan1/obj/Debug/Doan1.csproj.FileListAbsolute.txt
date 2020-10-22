@@ -229,6 +229,8 @@ D:\Doan\Doan1\Doan1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Doan\Doan1\Doan1\bin\Microsoft.Web.Infrastructure.dll
 D:\Doan\Doan1\Doan1\bin\Model.dll
 D:\Doan\Doan1\Doan1\bin\Newtonsoft.Json.dll
+D:\Doan\Doan1\Doan1\bin\PagedList.dll
+D:\Doan\Doan1\Doan1\bin\PagedList.Mvc.dll
 D:\Doan\Doan1\Doan1\bin\System.Web.Helpers.dll
 D:\Doan\Doan1\Doan1\bin\System.Web.Mvc.dll
 D:\Doan\Doan1\Doan1\bin\System.Web.Optimization.dll
@@ -241,6 +243,8 @@ D:\Doan\Doan1\Doan1\bin\Model.pdb
 D:\Doan\Doan1\Doan1\bin\Model.dll.config
 D:\Doan\Doan1\Doan1\bin\EntityFramework.xml
 D:\Doan\Doan1\Doan1\bin\EntityFramework.SqlServer.xml
+D:\Doan\Doan1\Doan1\bin\PagedList.xml
+D:\Doan\Doan1\Doan1\bin\PagedList.Mvc.xml
 D:\Doan\Doan1\Doan1\bin\System.Web.Helpers.xml
 D:\Doan\Doan1\Doan1\bin\System.Web.Mvc.xml
 D:\Doan\Doan1\Doan1\bin\System.Web.Optimization.xml
@@ -256,7 +260,3 @@ D:\Doan\Doan1\Doan1\obj\Debug\Doan1.csproj.CoreCompileInputs.cache
 D:\Doan\Doan1\Doan1\obj\Debug\Doan1.csproj.CopyComplete
 D:\Doan\Doan1\Doan1\obj\Debug\Doan1.dll
 D:\Doan\Doan1\Doan1\obj\Debug\Doan1.pdb
-D:\Doan\Doan1\Doan1\bin\PagedList.dll
-D:\Doan\Doan1\Doan1\bin\PagedList.Mvc.dll
-D:\Doan\Doan1\Doan1\bin\PagedList.xml
-D:\Doan\Doan1\Doan1\bin\PagedList.Mvc.xml

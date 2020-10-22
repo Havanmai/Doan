@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Doan1.Areas.Admin.Controllers
 {
@@ -14,17 +15,10 @@ namespace Doan1.Areas.Admin.Controllers
 
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
-
-            //var model = new List<Supplier>();
-            //using (var db= new DoanDbContext())
-            //{
-            //    model = db.Supplier.ToList();
-            //}
-            var dao = new StaffDao();
+           var dao = new StaffDao();
             var model = dao.ListAllPaging(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
-            return View(model);
-
+            return View(model.ToPagedList(page, pageSize));
         }
 
         [HttpGet]// lấy giao diện
@@ -75,10 +69,9 @@ namespace Doan1.Areas.Admin.Controllers
             return View("Index");
         }
         [HttpDelete]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id) 
         {
-            new StaffDao().Delete(id);
-
+            var da1o = new StaffDao().Delete(id);
             return RedirectToAction("Index", "Staff");
         }
     }

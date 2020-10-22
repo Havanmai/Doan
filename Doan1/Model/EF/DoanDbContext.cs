@@ -21,7 +21,7 @@ namespace Model.EF
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderDetail> OrderDetail { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Size> Size { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }

@@ -18,29 +18,29 @@
         <h4>Thông tin nhân viên</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="row">
-        @Html.HiddenFor(model => model.IdStaff)
-        <div class="col">
-            <div class="form-group">
-                @Html.LabelFor(model => model.NameStaff, htmlAttributes: new { @class = "control-label col-md-10" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NameStaff, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NameStaff, "", new { @class = "text-danger" })
+        <div class="row">
+            @Html.HiddenFor(model => model.IdStaff)
+            <div class="col">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NameStaff, htmlAttributes: new { @class = "control-label col-md-10" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NameStaff, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NameStaff, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-10" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.Gender)
-                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            <div class="col">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-10" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Gender)
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
         <div class="row">
             <div class="col">
                 <div class="form-group">
@@ -99,14 +99,6 @@
             <div class="col"></div>
         </div>
 
-
-
-
-
-
-
-
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-5">
                 <input type="submit" value="Lưu" class="btn btn-primary" />
@@ -121,3 +113,4 @@
 
 
 </div>
+@section Scripts {}

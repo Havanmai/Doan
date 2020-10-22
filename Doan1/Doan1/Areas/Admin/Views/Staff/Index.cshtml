@@ -7,32 +7,36 @@
 
 @section header{
     Trang Thông Tin Nhân Viên }
-
-    <div>
-        <p>
-            @using (Html.BeginForm("Index", "Staff", FormMethod.Get))
-            {
-                <div style="width:100%; height:50px; " id="search">
-
-
-                    <input type="text" value="@ViewBag.SearchString" name="searchString" style="width:20%; height:50px; margin-left:1100px; margin-right:20px;" />
-                    <button type="submit" class="btn btn-secondary" style="height:50px;">Tìm Kiếm</button>
+<!-- stylesheet lazy init -->
+<link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+<div>
+    <p>
+        @*@using (Html.BeginForm("Index", "Staff", FormMethod.Get))
+        {
+            <div style="width:100%; height:50px; " id="search">
 
 
+                <input type="text" value="@ViewBag.SearchString" name="searchString" style="width:20%; height:50px; margin-left:1100px; margin-right:20px;" />
+                <button type="submit" class="btn btn-secondary" style="height:50px;">Tìm Kiếm</button>
 
-                </div>
-            }
-            @*@Html.ActionLink("Create New", "Create")*@
-            <button type="button" class="btn btn-primary">
-                @Html.ActionLink("Thêm mới", "Create")
+            </div>
+        }*@
+        @*@Html.ActionLink("Create New", "Create")*@
+        <button type="button" class="btn btn-primary">
+            @Html.ActionLink("Thêm mới", "Create")
 
-            </button>
+        </button>
 
-        </p>
+    </p>
 
-    </div>
-    <table class="table  table-condensed table-striped table-bordered " style="border-collapse:collapse;">
+</div>
+<table id="dt_main" class="table  table-condensed table-striped table-bordered " style="border-collapse:collapse;">
+    <thead>
         <tr>
+
+            <th style="border: 1px solid #ccc;">
+                STT
+            </th>
             <th style="border: 1px solid #ccc;">
                 Tên Nhân Viên
             </th>
@@ -55,68 +59,96 @@
                 Trạng Thái
             </th>
             <th style="border: 1px solid #ccc;">Xử Lý</th>
+
         </tr>
+    </thead>
 
-        @for (int i = 0; i < Model.Count; i++)
-        {
-            <tr>
-                <td style="border: 1px solid #ccc;">
-                    @Model[i].NameStaff
-                </td>
-                <td style="border: 1px solid #ccc;">
-                    @if (@Model[i].Gender)
-                    {
-                        <p>Nam</p>
-                    }
-                    else
-                    {
-                        <p>Nữ</p>
-                    }
-                </td>
-                <td style="border: 1px solid #ccc;">
-                    @Model[i].Office
-                </td>
-                <td style="border: 1px solid #ccc;">
-                    @Model[i].Email
-                </td>
-                <td style="border: 1px solid #ccc;">
-                    @Model[i].PhoneNumber
-                </td>
-                <td style="border: 1px solid #ccc;">
-                    @Model[i].Address
-                </td>
-                <td style="border: 1px solid #ccc;">
-                    @if (@Model[i].Status)
-                    {
-                        <p>Hoạt động</p>
-                    }
-                    else
-                    {
-                        <p>Bị Khóa</p>
-                    }
-                </td>
-                <td style="border: 1px solid #ccc;">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr id="row_@Model[i].IdStaff">
+            <td style="border: 1px solid #ccc;">
+                @(i+1)
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @Model[i].NameStaff
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @if (@Model[i].Gender)
+                {
+                    <p>Nam</p>
+                }
+                else
+                {
+                    <p>Nữ</p>
+                }
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @Model[i].Office
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @Model[i].Email
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @Model[i].PhoneNumber
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @Model[i].Address
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @if (@Model[i].Status)
+                {
+                    <p>Hoạt động</p>
+                }
+                else
+                {
+                    <p>Bị Khóa</p>
+                }
+            </td>
+            <td style="border: 1px solid #ccc;">
 
-                    @Html.ActionLink("Sửa", "Edit", new { id = Model[i].IdStaff }, new { @class = "btn btn-warning" })
-                    |
-                    <button type="button" class="btn btn-danger">
-                        @Ajax.ActionLink("Xóa", "Delete", new { id = Model[i].IdStaff }, new AjaxOptions
-                   {
-                       Confirm = "Bạn có muốn xóa bản ghi này không?",
-                       OnComplete = "$('#row_" + Model[i].IdStaff + "').remove();",
-                       HttpMethod = "Delete"
-                   })
-                    </button>
+                @Html.ActionLink("Sửa", "Edit", new { id = @Model[i].IdStaff }, new { @class = "btn btn-warning" })
+                |
+                <button type="button" class="btn btn-danger">
+                    @Ajax.ActionLink("Xóa", "Delete", new { id = @Model[i].IdStaff }, new AjaxOptions
+               {
+                   Confirm = "Bạn có muốn xóa bản ghi này không?",
+                   OnComplete = "$('#row_" + @Model[i].IdStaff + "').remove();",
+                   OnFailure = "alert('loi');",
+                   HttpMethod = "Delete"
+               })
+                </button>
 
 
-                </td>
-            </tr>
-        }
+            </td>
+        </tr>
+    }
 
-    </table>
-    <div>
+</table>
+<div style="display:none;">
 
-        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
-    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+</div>
+@section Scripts {
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script>
+        $.fn.dataTable.defaults.oLanguage = Object.assign($.fn.dataTable.defaults.oLanguage, {
+            sSearch: 'Tìm kiếm: &nbsp;/',
+            sEmptyTable: 'Không có bản ghi nào',
+            sLengthMenu: 'Xem _MENU_ bản ghi',
+            sZeroRecords: '<center>Không thấy bản ghi nào phù hợp</center>',
+            sInfo: 'Hiển thị _START_ đến _END_ trong tổng số _TOTAL_',
+            oPaginate: {
+                sFirst: 'Đầu tiên',
+                sLast: 'Cuối cùng',
+                sNext: 'Trang tiếp',
+                sPrevious: 'Trang trước'
+            }
+        });
+        $('#dt_main').dataTable({
+            lengthMenu: [[10, 20, 40, -1], [10, 20, 40, "Tất cả"]],
+            pageLength: 20
+        });
+    </script>
+}

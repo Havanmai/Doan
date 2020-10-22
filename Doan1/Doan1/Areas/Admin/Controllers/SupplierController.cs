@@ -12,7 +12,6 @@ namespace Doan1.Areas.Admin.Controllers
     public class SupplierController : Controller
     {
         // GET: Admin/Supplier
-        
         public ActionResult Index(string searchString ,int page = 1, int pageSize = 10)
         {
 
@@ -24,7 +23,7 @@ namespace Doan1.Areas.Admin.Controllers
             var dao = new SupplierDao();
             var model = dao.ListAllPaging(searchString,page, pageSize);
             ViewBag.SearchString = searchString;
-            return View(model);
+            return View(model.ToPagedList(page,pageSize));
 
         }
        
@@ -70,7 +69,7 @@ namespace Doan1.Areas.Admin.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Cập nhật không thành công");
-                }
+                } 
             }
            
             return View("Index");

@@ -52,7 +52,7 @@ namespace Model.Dao
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return false;
             }
@@ -62,12 +62,12 @@ namespace Model.Dao
         {
             try
             {
-                var supplier = db.Staffs.Find(id);
-                db.Staffs.Remove(supplier);
+                var staff = db.Staffs.Find(id);
+                db.Staffs.Remove(staff);
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

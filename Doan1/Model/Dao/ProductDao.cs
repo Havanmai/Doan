@@ -22,14 +22,11 @@ namespace Model.Dao
             db.SaveChanges();
             return entity.IdProduct;
         }
-        public IEnumerable<Product> ListAllPaging(string searchString, int page, int pageSize)
+        public List<Product> ListAll()
         {
-            IQueryable<Product> model = db.Products.OrderByDescending(x => x.NameProduct);
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                model = model.Where(x => x.NameProduct.Contains(searchString) );
-            }
-            return model.OrderByDescending(x => x.CreateDay).ToPagedList(page, pageSize);
+            return db.Products.ToList();
+            
+             
         }
         public Product ViewDetail(int id)
         {
@@ -55,7 +52,7 @@ namespace Model.Dao
                 procduct.Quantity = entity.Quantity;
                 procduct.TopHot = procduct.TopHot;
                 procduct.MoreImages = procduct.MoreImages;
-                procduct.IsSupplier = entity.IsSupplier;
+                procduct.IdSupplier = entity.IdSupplier;
                 procduct.Status = entity.Status;
                 procduct.CreateDay = entity.CreateDay;
                 db.SaveChanges();

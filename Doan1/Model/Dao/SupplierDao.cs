@@ -32,7 +32,11 @@ namespace Model.Dao
             }
             return model.OrderByDescending(x => x.NameSupplier).ToPagedList(page, pageSize);
         }
-       
+        public List<Supplier> ListAll()
+        {
+            return db.Suppliers.Where(x => x.Status == true).ToList();
+        }
+
         public Supplier ViewDetail(int id)
         {
             return db.Suppliers.Find( id);

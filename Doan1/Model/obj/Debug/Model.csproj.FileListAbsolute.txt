@@ -38,3 +38,16 @@ D:\Doan\Doan1\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 D:\Doan\Doan1\Model\obj\Debug\Model.csproj.CopyComplete
 D:\Doan\Doan1\Model\obj\Debug\Model.dll
 D:\Doan\Doan1\Model\obj\Debug\Model.pdb
+D:\Doan\Doan1\Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Doan\Doan1\Model\bin\Debug\System.Web.Helpers.dll
+D:\Doan\Doan1\Model\bin\Debug\System.Web.Mvc.dll
+D:\Doan\Doan1\Model\bin\Debug\System.Web.Razor.dll
+D:\Doan\Doan1\Model\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Doan\Doan1\Model\bin\Debug\System.Web.WebPages.dll
+D:\Doan\Doan1\Model\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Doan\Doan1\Model\bin\Debug\System.Web.Helpers.xml
+D:\Doan\Doan1\Model\bin\Debug\System.Web.Mvc.xml
+D:\Doan\Doan1\Model\bin\Debug\System.Web.Razor.xml
+D:\Doan\Doan1\Model\bin\Debug\System.Web.WebPages.xml
+D:\Doan\Doan1\Model\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Doan\Doan1\Model\bin\Debug\System.Web.WebPages.Razor.xml

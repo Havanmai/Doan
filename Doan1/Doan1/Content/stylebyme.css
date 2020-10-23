@@ -1,0 +1,8 @@
+﻿.navbar-default {
+    background-color: #cce2d1;
+    border-color: transparent;
+}
+
+.img_grid {
+    height: 120px; /* định nghĩa chiều cao cho ảnh của sản phẩm */
+}

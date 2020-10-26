@@ -19,6 +19,7 @@ namespace Model.Dao
         }
         public long Insert(Product entity)
         {
+            entity.Status = true;
             db.Products.Add(entity);
             db.SaveChanges();
             return entity.IdProduct;

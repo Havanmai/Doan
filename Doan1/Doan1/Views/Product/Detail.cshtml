@@ -15,23 +15,23 @@
 
             <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
                 <img class="card-img-top" src="~/Images/Product/@Model.ProductDetail.Image" alt="@Model.ProductDetail.NameProduct" style="width:100%;">
-                @*@foreach (var item in Model.listImageProduct)
+                @foreach (var item in Model.listImageProduct)
                     {
                         <a href="~/Images/Product/@item.Image"><img src="~/Images/Product/Detail/@item.Image" width="144" height="96"></a>
-                    }*@
+                    }
 
             </div>
         </div>
         <div class="col-sm-8">
-            <h1>Tên sản phẩm: @Model.ProductDetail.NameProduct</h1>
+            <h2>Tên sản phẩm: @Model.ProductDetail.NameProduct</h2>
             @if (@Model.ProductDetail.PromotionPrice != null)
             {
-                <h2>Giá sản phẩm: <strike>@Model.ProductDetail.Price <i>VND</i></strike></h2>
-                <h6>Giá ưu đãi: @Model.ProductDetail.PromotionPrice <i>VND</i></h6>
+                <h3>Giá sản phẩm: <strike>@Model.ProductDetail.Price <i>VND</i></strike></h3>
+                <h3>Giá ưu đãi: @Model.ProductDetail.PromotionPrice <i>VND</i></h3>
             }
             else
             {
-                <h2>Giá sản phẩm: @Model.ProductDetail.Price <i>VND</i></h2>
+                <h3>Giá sản phẩm: @Model.ProductDetail.Price <i>VND</i></h3>
             }
 
             @*<h6>Giá ưu đãi: @Model.ProductDetail.PromotionPrice</h6>*@
@@ -42,7 +42,7 @@
                 <div class="buttons_added">
                     <span style="margin-right:50px;">Số lượng :</span> 
                     <input class="minus is-form" type="button" value="-">
-                    <input aria-label="quantity" class="input-qty" max="@Model.ProductDetail.Quantity" min="1" name="" type="number" value="1">
+                    <input aria-label="quantity" class="input-qty" max="@Model.ProductDetail.Quantity" min="1" id="txtQuantity" type="number" value="1" >
                     <input class="plus is-form" type="button" value="+" style="margin-right:20px;">
                 </div>
 
@@ -53,7 +53,7 @@
                 <button class="btn btn-primary" style="margin-left:150px;"> Thêm giỏ hàng</button>
 
                 <button class="btn btn-danger" style="margin-left:20px; margin-right:150px;"> 
-                     @Html.ActionLink(" Mua hàng", "AddItem", "Cart", new { productId = @Model.ProductDetail.IdProduct }, new { quantity = @Model.ProductDetail.Quantity }) 
+                     @Html.ActionLink(" Mua hàng", "AddItem", "Cart", new { productId = @Model.ProductDetail.IdProduct, quantity =@"$('#txtQuantity').val()" },null) 
                </button>
             </div>
 

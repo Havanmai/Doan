@@ -138,7 +138,7 @@ namespace Doan1.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(Product product, HttpPostedFileBase[] imageList)
         {
             // Kiểm tra dữ liệu
             // Gọi xuống database tạo mới 1 dòng dữ liệu
@@ -163,36 +163,38 @@ namespace Doan1.Areas.Admin.Controllers
                 try
                 {
                     var dao = new ProductDao();
+                    var dao6 = new ImageProductDao();
                     bool result = dao.Update(product);
                     if (result == true)
                     {
-                        return RedirectToAction("Index", "Product");
+                        if (imageList != null) // imageList là input up nhiều ảnh
+                        {
+                            foreach (HttpPostedFileBase file in imageList)
+                            {
+                                string path = Server.MapPath("~/Images/Product/Detail/"); // đường dẫn tương đối
+                                if (!Directory.Exists(path)) // nếu như đường dẫn không tồn tại
+                                {
+                                    Directory.CreateDirectory(path);
+                                }
+                                if (file != null) // tức có file
+                                {
+                                    file.SaveAs(path + Path.GetFileName(file.FileName)); // tức đường dẫn + tên file ảnh
+                                    var imageProduct = new ImageProduct(); // tên bảng trong CSDL trong SQLserver
+                                    
+                                    imageProduct.IdProduct = product.IdProduct;
+                                    imageProduct.Image = file.FileName;
+                                    dao6.Insert(imageProduct);
+                                }
+                            }
+                        }
+                    
+                    return RedirectToAction("Index", "Product");
                     }
                     else
                     {
                         ModelState.AddModelError("", "Cập nhật không thành công");
                     }
-                    //if (imageList != null) // imageList là input up nhiều ảnh
-                    //{
-                    //    foreach (HttpPostedFileBase file in imageList)
-                    //    {
-                    //        string path = Server.MapPath("~/Images/Product/Detail/"); // đường dẫn tương đối
-                    //        if (!Directory.Exists(path)) // nếu như đường dẫn không tồn tại
-                    //        {
-                    //            Directory.CreateDirectory(path);
-                    //        }
-                    //        if (file != null) // tức có file
-                    //        {
-                    //            file.SaveAs(path + Path.GetFileName(file.FileName)); // tức đường dẫn + tên file ảnh
-                    //            var imageProduct = new ImageProduct(); // tên bảng trong CSDL trong SQLserver
-                    //            imageProduct.ProductID = product.ProductID;
-                    //            imageProduct.ImagePath = product.ImagePath;
-                    //            db.ImageProducts.Add(imageProduct);
-                    //            db.SaveChanges();
-                    //        }
-                    //    }
-                    //}
-                    // }
+
                 }
                 catch (Exception ex)
                 {

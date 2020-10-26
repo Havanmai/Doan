@@ -46,5 +46,7 @@ namespace Model.EF
                 .Property(e => e.PromotionPrice)
                 .HasPrecision(18, 0);
         }
+
+        
     }
 }

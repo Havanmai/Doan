@@ -32,10 +32,27 @@
             <div id="sidebar-nav" class="sidebar-nav">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="#device-controls5" data-toggle="collapse">
                             <span class="sidebar-nav-icon fa fa-rocket">
-                            </span> <span class="sidebar-nav-text">Trang bắt đầu</span>
+                            </span> <span class="sidebar-nav-text">Quản lý đơn hàng</span>
                         </a>
+                        <ul id="device-controls5" class="collapse" data-parent="#sidebar-nav">
+                            <li>
+                                <a> @Html.ActionLink("Đơn hàng mới", "Index", "Supplier") </a>
+                            </li>
+                            <li>
+                                <a>@Html.ActionLink("Đơn hàng đã duyệt", "Index", "Customer")</a>
+                            </li>
+                            <li>
+                                <a>@Html.ActionLink("Đơn hàng đang giao", "Index", "Staff")</a>
+                            </li>
+                            <li>
+                                <a>@Html.ActionLink("Đơn hàng đã hoàn thành", "Index", "Staff")</a>
+                            </li>
+                            <li>
+                                <a>@Html.ActionLink("Đơn hàng đã hủy", "Index", "Staff")</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <hr>
@@ -125,7 +142,7 @@
                         <button type="button" class="btn btn-sidebar" data-toggle="sidebar">
                             <i class="fa fa-bars"></i>
                         </button>
-                        <span class="pr-2">Đây là trang blog của ... <i class="fa fa-pray"></i></span>
+                        <!--<span class="pr-2">Đây là trang blog của ... <i class="fa fa-pray"></i></span>-->
                     </div>
 
                 </nav>
@@ -146,18 +163,18 @@
     </div>
 
     <!-- Main js -->
-    @Scripts.Render("~/bundles/jquery")
-    <script src="~/Assets/admin/js/jquery-3.4.1.min.js"></script>
-    @*<script src="~/Assets/admin/vendor/jquery/jquery.min.js"></script>*@
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+                        @Scripts.Render("~/bundles/jquery")
+                        <script src="~/Assets/admin/js/jquery-3.4.1.min.js"></script>
+                        @*<script src="~/Assets/admin/vendor/jquery/jquery.min.js"></script>*@
+                        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+                        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-    <script src="~/Assets/admin/js/admin4b.min.js"></script>
-    @*Function template file*@
-    <script src="~/Assets/admin/js/plugins/ckeditor/ckeditor.js"></script>
-    <script src="~/Assets/admin/js/docs.js"></script>
+                        <script src="~/Assets/admin/js/admin4b.min.js"></script>
+                        @*Function template file*@
+                        <script src="~/Assets/admin/js/plugins/ckeditor/ckeditor.js"></script>
+                        <script src="~/Assets/admin/js/docs.js"></script>
 
-    @RenderSection("Scripts", true)
+                        @RenderSection("Scripts", true)
 
 </body>
 

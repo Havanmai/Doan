@@ -145,12 +145,14 @@
     <Compile Include="Common\AccountLogin.cs" />
     <Compile Include="Common\CommonConstant.cs" />
     <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3731,6 +3733,10 @@
     <Content Include="Assets\admin\vendor\jquery\jquery.min.js" />
     <Content Include="Assets\admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Assets\admin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Assets\client\js\controller\baseController.js" />
+    <Content Include="Assets\client\js\controller\cartController.js" />
+    <Content Include="Assets\client\js\controller\contactController.js" />
+    <Content Include="Assets\client\js\controller\userController.js" />
     <Content Include="Assets\design\css\shop-homepage.css" />
     <Content Include="Assets\design\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Assets\design\vendor\bootstrap\css\bootstrap-grid.min.css" />
@@ -4112,12 +4118,12 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Images\Product\Detail\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -46,7 +46,7 @@
                             <a class="nav-link" style="color: white !important;" href="@Url.Action("Contact","Home")">Đăng nhập</a>
                         </li>
                         <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow" style="margin-left:150px; display:none;" >
+                        <li class="nav-item dropdown no-arrow" style="margin-left:150px; display:none;">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle" src="~/Images/EmployeeImage.png">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="margin-left:10px; padding:5px">Username</span>
@@ -77,30 +77,30 @@
 
         </nav>
         <nav class="navbar navbar-expand-lg navbar-blue bg-blue " style="align-content:center; height:70px;background:blue; color:white; position:fixed;width:100%; ">
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 " style="width:700px;margin-left:500px;height:50px;" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" style="height:50px;width:50px;" >
-                            <img src="~/Images/search--v2.png" style="height:30px;width:30px;"/>
-                            
+                        <button class="btn btn-primary" type="button" style="height:50px;width:50px;">
+                            <img src="~/Images/search--v2.png" style="height:30px;width:30px;" />
+
                         </button>
                     </div>
                     <div style="margin-left:50px; ">
 
-                        <img src="~/Images/giohang.png" style="height:30px;width:30px;"/>
+                        <img src="~/Images/giohang.png" style="height:30px;width:30px;" />
                     </div>
 
                 </div>
-                
-               
+
+
             </form>
-            
-            
+
+
         </nav>
     </header>
     <main>
-        <div class="container body-content" style="margin-top:50px">
+        <div class="container body-content" style="margin-top:150px">
             @RenderBody()
         </div>
     </main>
@@ -117,5 +117,6 @@
     <script src="~/Scripts/fotorama-4.6.4/fotorama.js"></script>
     @RenderSection("scripts", required: false)
     <!-- Mỗi 1 layout chỉ có 1 RenderBody mà thôi nhưng RenderSection thì có rất nhiều -->
+    @RenderSection("jsFooter", required: false)
 </body>
 </html>

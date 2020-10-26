@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.EF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,15 @@ namespace Doan1.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            List<Product> model = new List<Product>();
+            List<Category> cate = new List<Category>();
+            using (var db = new DoanDbContext())
+            { // phải using System.Linq;
+                model = db.Products.Where(x => x.Status != false).OrderByDescending(x => x.IdProduct).ToList();
+                cate = db.Categories.Where(x => x.Status != false).ToList();
+            }
+            ViewBag.CategoryData = cate;
+            return View(model);
         }
 
         public ActionResult About()

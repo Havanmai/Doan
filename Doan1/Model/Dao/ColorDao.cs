@@ -18,5 +18,9 @@ namespace Model.Dao
         {
             return db.Colors.OrderByDescending(x=>x.NameColor).ToList();
         }
+        public Color ViewDetail(int id)
+        {
+            return db.Colors.Find(id);
+        }
     }
 }

@@ -1,0 +1,39 @@
+﻿@model List<Model.EF.Product>
+@{
+    ViewBag.Title = "Product Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" >
+
+    <div class="col-lg-3">
+
+        <h1 class="my-4">NVPT SHOP</h1>
+        <div class="list-group">
+            <a href="#" class="list-group-item">Category 1</a>
+            <a href="#" class="list-group-item">Category 2</a>
+            <a href="#" class="list-group-item">Category 3</a>
+        </div>
+
+    </div>
+    <!-- /.col-lg-3 -->
+
+    <div class="col-lg-9" style="margin-top:50px">
+
+        <div class="row">
+
+            @foreach (var item in Model) // loop từng sản phẩm
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    @Html.Partial("_ProductView", item);
+                </div>
+            }
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.col-lg-9 -->
+
+</div>
+<!-- /.row -->

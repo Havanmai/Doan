@@ -1,0 +1,247 @@
+﻿@model Model.EF.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Cập nhật, chỉnh sửa thông tin sản phẩm
+}
+
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4> Thông tin sản phẩm </h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.HiddenFor(model => model.IdProduct, htmlAttributes: new { @class = "control-label col-md-10" })
+
+        </div>
+        <div class="form-group">
+            @Html.HiddenFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-10" })
+
+        </div>
+        <div class="form-group">
+            @Html.Label("Tên sản phẩm ", htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.NameProduct, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NameProduct, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Mô tả", htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Decription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Decription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Hình ảnh sản phẩm</label> <br />
+            <img style="width:20%" class="card-img-top" src="~/Images/Product/@Model.Image" alt="@Model.Image"> <br /> <br />
+            @Html.Label("Hình ảnh sản phẩm", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input name="image0" type="file" />
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.MoreImages, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MoreImages, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MoreImages, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.Label("Giá sản phẩm", htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PromotionPrice, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PromotionPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PromotionPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Số lượng", htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Mô tả chi tiết sản phẩm ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Mã code sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Ngày tạo", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CreateDay, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CreateDay, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.ViewCrount, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ViewCrount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ViewCrount, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.Label("Sản phẩm nổi bật", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.TopHot)
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Nhà cung cấp", htmlAttributes: new { @class = "control-label col-md-2" })
+
+
+            <div class="col-md-3">
+                @Html.DropDownList("IdSupplier", null, new { @class = "form-control" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Loại sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.DropDownList("IdCategory", null, new { @class = "form-control" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Màu", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.DropDownList("IdColor", null, new { @class = "form-control" })
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.Label("Size", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-3">
+            @Html.DropDownList("IdSize", null, new { @class = "form-control" })
+
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+                <button type="reset" class="btn btn-dark">Hủy</button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{ <!-- section tên -->
+    <script>
+        /// Kiem tra file
+        $(function () {
+            $("input:file").change(function () { // khi input có chọn file
+                //alert("change");
+                var fileName = $(this).val(); // this là input:file
+                var onlyExcel = $(this).attr("onlyExcel");
+                var _validFileExtensions = [".doc", ".docx", ".pdf", ".jpeg", ".bmp", ".png", ".gif", ".jpg", ".dwg", ".dwf", ".dxf", ".xls"];
+                var _validFileExtensions_only_Excel = [".xls"]; // dành riêng cho file Excel
+
+                if (onlyExcel == "1") { // muốn input phải file Excel thì đặt trong input dòng onlyExcel = "1" nhé
+                    ValidateFile($(this), _validFileExtensions_only_Excel);
+                }
+                else {
+                    ValidateFile($(this), _validFileExtensions);
+                }
+            });
+        });
+
+        function ValidateFile(element, lstFileChoPhep) {
+            var arrInputs = element;
+            for (var i = 0; i < arrInputs.length; i++) {
+                var oInput = arrInputs[i];
+                if (oInput.type == "file") {
+                    var sFileName = oInput.value;
+                    if (sFileName.length > 0) {
+                        var blnValid = false;
+                        for (var j = 0; j < lstFileChoPhep.length; j++) {
+                            var sCurExtension = lstFileChoPhep[j];
+                            if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                                // nếu file mình upload có đuôi trùng với các đuôi file đã được quy định trong _validFileExtensions
+                                blnValid = true;
+                                break;
+                            }
+                        }
+
+                        //var ErrorMess = sFileName + " is invalid, allowed extensions are: " + lstFileChoPhep.join(", ")
+                        var ErrorMess = "";
+                        if (!blnValid) { // nếu đuôi file k đúng định dạng
+                            ErrorMess = "File không đúng định dạng cho phép!";
+                        }
+
+                        var size;
+
+                        size = oInput.files[0].size;
+
+                        if (size > 10 * 1024 * 1024) { // không cho quá 10 MB
+                            ErrorMess = ErrorMess + " File không được phép lớn hơn 10MB!";
+
+                            blnValid = false;
+                        }
+
+                        if (!blnValid) {
+                            element.val("");
+
+                            //var elememt_showText_file = element.next().children().first().val("");
+
+                            //toastr["error"](ErrorMess); // show lỗi
+                            alert(ErrorMess);
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+    </script>
+}
+

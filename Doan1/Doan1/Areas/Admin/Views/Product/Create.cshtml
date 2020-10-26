@@ -34,12 +34,19 @@
         </div>
 
         <div class="form-group">
+            @*<label>Hình ảnh sản phẩm</label> <br />
+                <img style="width:20%" class="card-img-top" src="~/Images/Product/@Model.Image" alt="@Model.Image"> <br /> <br />*@
             @Html.Label("Hình ảnh sản phẩm", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input name="img0" type="file" />
+                <input name="image0" type="file" />
             </div>
         </div>
-
+        <div class="form-group">
+            <label>Hình khác</label>
+            <div class="col-md-10">
+                <input name="imageList" type="file" multiple /> <!-- cho phép ta được chọn nhiều file hình hơn -->
+            </div>
+        </div>
         @*<div class="form-group">
                 @Html.LabelFor(model => model.MoreImages, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -65,7 +72,7 @@
             </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-10" })
+            @Html.Label("Số lượng", htmlAttributes: new { @class = "control-label col-md-10" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
@@ -97,12 +104,12 @@
         </div>
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.ViewCrount, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.ViewCrount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ViewCrount, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.ViewCrount, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ViewCrount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ViewCrount, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             @Html.Label("Sản phẩm nổi bật", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -117,7 +124,7 @@
         <div class="form-group">
             @Html.Label("Nhà cung cấp", htmlAttributes: new { @class = "control-label col-md-2" })
 
-            
+
             <div class="col-md-3">
                 @Html.DropDownList("IdSupplier", null, new { @class = "form-control" })
 
@@ -149,7 +156,7 @@
 
         </div>
 
-        <br/>
+        <br />
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -164,5 +171,73 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts{
+@section scripts{ <!-- section tên -->
+    <script>
+        /// Kiem tra file
+        $(function () {
+            $("input:file").change(function () { // khi input có chọn file
+                //alert("change");
+                var fileName = $(this).val(); // this là input:file
+                var onlyExcel = $(this).attr("onlyExcel");
+                var _validFileExtensions = [".doc", ".docx", ".pdf", ".jfif", ".jpeg", ".bmp", ".png", ".gif", ".jpg", ".dwg", ".dwf", ".dxf", ".xls"];
+                var _validFileExtensions_only_Excel = [".xls"]; // dành riêng cho file Excel
+
+                if (onlyExcel == "1") { // muốn input phải file Excel thì đặt trong input dòng onlyExcel = "1" nhé
+                    ValidateFile($(this), _validFileExtensions_only_Excel);
+                }
+                else {
+                    ValidateFile($(this), _validFileExtensions);
+                }
+            });
+        });
+
+        function ValidateFile(element, lstFileChoPhep) {
+            var arrInputs = element;
+            for (var i = 0; i < arrInputs.length; i++) {
+                var oInput = arrInputs[i];
+                if (oInput.type == "file") {
+                    var sFileName = oInput.value;
+                    if (sFileName.length > 0) {
+                        var blnValid = false;
+                        for (var j = 0; j < lstFileChoPhep.length; j++) {
+                            var sCurExtension = lstFileChoPhep[j];
+                            if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                                // nếu file mình upload có đuôi trùng với các đuôi file đã được quy định trong _validFileExtensions
+                                blnValid = true;
+                                break;
+                            }
+                        }
+
+                        //var ErrorMess = sFileName + " is invalid, allowed extensions are: " + lstFileChoPhep.join(", ")
+                        var ErrorMess = "";
+                        if (!blnValid) { // nếu đuôi file k đúng định dạng
+                            ErrorMess = "File không đúng định dạng cho phép!";
+                        }
+
+                        var size;
+
+                        size = oInput.files[0].size;
+
+                        if (size > 10 * 1024 * 1024) { // không cho quá 10 MB
+                            ErrorMess = ErrorMess + " File không được phép lớn hơn 10MB!";
+
+                            blnValid = false;
+                        }
+
+                        if (!blnValid) {
+                            element.val("");
+
+                            //var elememt_showText_file = element.next().children().first().val("");
+
+                            //toastr["error"](ErrorMess); // show lỗi
+                            alert(ErrorMess);
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+    </script>
 }

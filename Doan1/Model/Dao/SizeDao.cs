@@ -18,5 +18,9 @@ namespace Model.Dao
         {
             return db.Sizes.OrderByDescending(x => x.NameSize).ToList();
         }
+        public Size ViewDetail(int id)
+        {
+            return db.Sizes.Find(id);
+        }
     }
 }

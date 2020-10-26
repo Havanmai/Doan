@@ -85,6 +85,8 @@
     <Compile Include="Dao\CategoryDao.cs" />
     <Compile Include="Dao\ColorDao.cs" />
     <Compile Include="Dao\CustomerDao.cs" />
+    <Compile Include="Dao\HomeDao.cs" />
+    <Compile Include="Dao\ImageProductDao.cs" />
     <Compile Include="Dao\ProductDao.cs" />
     <Compile Include="Dao\SizeDao.cs" />
     <Compile Include="Dao\StaffDao.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="EF\Comments.cs" />
     <Compile Include="EF\Customer.cs" />
     <Compile Include="EF\DoanDbContext.cs" />
+    <Compile Include="EF\ImageProduct.cs" />
     <Compile Include="EF\News.cs" />
     <Compile Include="EF\Order.cs" />
     <Compile Include="EF\OrderDetail.cs" />
@@ -104,6 +107,9 @@
     <Compile Include="EF\Staff.cs" />
     <Compile Include="EF\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CategoryViewWebModel.cs" />
+    <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\ProductViewWebModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -112,6 +118,7 @@
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

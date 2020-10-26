@@ -14,7 +14,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Customer</h4>
+        <h4>Thông tin khách hàng </h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.IdCustomer)
@@ -42,7 +42,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <div class="form-group">
+                
                 <div class="form-group">
                     @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-3" })
 
@@ -53,7 +53,7 @@
             </div>
             <div class="col">
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-3" })
 
                     @Html.DisplayFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
 
@@ -75,7 +75,7 @@
             </div>
             <div class="col">
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CreateDay, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.CreateDay, htmlAttributes: new { @class = "control-label col-md-3" })
 
                     @Html.DisplayFor(model => model.CreateDay, new { htmlAttributes = new { @class = "form-control" } })
 
@@ -135,7 +135,7 @@
             </div>
         </div>
     </div>
-        </div>
+       
 }
 
 <div>

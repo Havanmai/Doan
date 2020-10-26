@@ -1,0 +1,16 @@
+﻿
+@model Model.ViewModel.CategoryViewWebModel
+@{
+    ViewBag.Title = "Danh sách sản phẩm theo phân loại";
+}
+<p>
+    @Html.Raw(Model.CategoryDetail.Description)
+</p>
+<div>
+    @foreach (var item in Model.ProductList)
+    {
+        <div class="col-lg-4 col-md-6 mb-4">
+            @Html.Partial("_ProductView", item)
+        </div>
+    }
+</div>

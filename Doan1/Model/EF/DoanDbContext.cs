@@ -4,6 +4,7 @@ namespace Model.EF
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Model.ViewModel;
 
     public partial class DoanDbContext : DbContext
     {
@@ -25,7 +26,8 @@ namespace Model.EF
         public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
-
+        public virtual DbSet<ImageProduct> ImageProducts { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Customer>()

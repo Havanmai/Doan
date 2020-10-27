@@ -4,7 +4,7 @@
     ViewBag.Title = "Danh sách sản phẩm theo phân loại";
 }
 <p>
-    @Html.Raw(Model.CategoryDetail.Description)
+    @Html.Raw(Model.CategoryDetail.CategoryName)
 </p>
 <div>
     @foreach (var item in Model.ProductList)

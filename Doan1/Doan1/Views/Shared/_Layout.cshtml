@@ -13,9 +13,10 @@
     <!-- Link font chữ -->
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background:#eee;">
     <header style="position:relative;" class="header fixed-top">
         <!-- Navigation -->
+       
         <nav class="navbar navbar-expand-lg navbar-navbar-white  bg-blue fixed-top" style="background:blue; color:white!important;">
             <div class="container">
                 <a class="navbar-brand" href="@Url.Action("Index","Home")" style="font-weight:bold;color:white!important;font-family: 'Kaushan Script', cursive">BUI SHOES SHOP</a>
@@ -39,37 +40,50 @@
                         <li class="nav-item">
                             <a class="nav-link" style="color: white !important;" href="@Url.Action("Contact","Home")">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: white !important;" href="@Url.Action("Register","User")">Đăng ký</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: white !important;" href="@Url.Action("Contact","Home")">Đăng nhập</a>
-                        </li>
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow" style="margin-left:150px; display:none;">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-profile rounded-circle" src="~/Images/EmployeeImage.png">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="margin-left:10px; padding:5px">Username</span>
+                        @{ 
+                            var session = (Doan1.Common.AccountLogin)Session[Doan1.Common.CommonConstant.USER_SESSION];
+                        }
+                        @if (session == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: white !important;" href="@Url.Action("Register","Customer")">Đăng ký</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: white !important;" href="@Url.Action("Login","Customer")">Đăng nhập</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item dropdown no-arrow ">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="img-profile rounded-circle" src="~/Images/EmployeeImage.png">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="margin-left:5px;color:#fff; padding:5px">@session.Username</span>
 
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Thông tin tài khoản
                                 </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" >
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Thông tin tài khoản
+                                    </a>
 
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Đơn mua hàng
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Đăng xuất
-                                </a>
-                            </div>
-                        </li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Đơn mua hàng
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="@Url.Action("Logout","Customer")" >
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        @*@Html.ActionLink("Đăng xuất","Logout","Customer")*@
+                                        Đăng xuất
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- Nav Item - User Information -->
+                        }
+
+
+
                     </ul>
                 </div>
             </div>
@@ -86,10 +100,7 @@
 
                         </button>
                     </div>
-                    <div style="margin-left:50px; ">
-
-                        <img src="~/Images/giohang.png" style="height:30px;width:30px;" />
-                    </div>
+                    @{ Html.RenderAction("_ViewCart", "Home");}
 
                 </div>
 
@@ -100,15 +111,32 @@
         </nav>
     </header>
     <main>
-        <div class="container body-content" style="margin-top:100px">
+        <div class="container body-content" style="margin-top:100px; background:#fff;min-height:1000px;">
             @RenderBody()
         </div>
     </main>
     <!-- Footer -->
-    <footer class="py-5 bg-blue" style="background:blue; color:white;">
-        <section>
-            <p class="m-0 text-center text-white ">Copyright &copy; Đỗ Thu Hà</p>
-        </section>
+    <footer class="py-5 bg-blue" style="background:blue; color:white; display:flex; justify-content:space-between; padding-left:250px;padding-right:300px;" >
+        <div class="fLeft">
+            <i>BUISHOES SHOP</i>
+            <p>
+                Địa chỉ: Ngõ 42 Văn Hương, Tôn Đức Thắng, Đống Đa, Hà Nội<br />
+                Điện thoại:091 461 68 66
+            </p>
+            <p>Email: <a href="mailto:support@hocwebchuan.com" style="color:#fff;">support@buishoes.com</a></p>
+            <!-- / class fLeft -->
+        </div>
+
+        <div class="fRight">
+            <ul>
+                <li style="color:#fff;"><a href="https://www.facebook.com/buishoes.vnl" style="color:#fff;">Link Facebook1</a></li>
+                <li style="color:#fff;"><a href="https://www.facebook.com/groups/360247708501389" style="color:#fff;">Link Facebook1</a></li>
+                <li><a href="#">Link 03</a></li>
+                <li><a href="#">Link 04</a></li>
+            </ul>
+            <p>Copyright (c) Hà Vân Mai</p>
+            <!-- / class fRight -->
+        </div>
     </footer>
     <!-- Bootstrap core JavaScript -->
     <script src="~/Content/vendor/jquery/jquery.min.js"></script>

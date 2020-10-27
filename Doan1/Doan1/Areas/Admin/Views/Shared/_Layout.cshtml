@@ -163,18 +163,19 @@
     </div>
 
     <!-- Main js -->
-                        @Scripts.Render("~/bundles/jquery")
-                        <script src="~/Assets/admin/js/jquery-3.4.1.min.js"></script>
-                        @*<script src="~/Assets/admin/vendor/jquery/jquery.min.js"></script>*@
-                        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-                        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Assets/admin/js/jquery-3.4.1.min.js"></script>
+    @*<script src="~/Assets/admin/vendor/jquery/jquery.min.js"></script>*@
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-                        <script src="~/Assets/admin/js/admin4b.min.js"></script>
-                        @*Function template file*@
-                        <script src="~/Assets/admin/js/plugins/ckeditor/ckeditor.js"></script>
-                        <script src="~/Assets/admin/js/docs.js"></script>
-
-                        @RenderSection("Scripts", true)
+    <script src="~/Assets/admin/js/admin4b.min.js"></script>
+    @*Function template file*@
+    <script src="~/Assets/admin/js/plugins/ckfinder/ckfinder.js"></script>
+    <script src="~/Assets/admin/js/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Assets/admin/js/docs.js"></script>
+    @RenderSection("jsFooter", required: false)
+    @RenderSection("Scripts", true)
 
 </body>
 

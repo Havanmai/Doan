@@ -10,12 +10,12 @@
         </h4>
         @if (@Model.PromotionPrice != null)
         {
-            <h6><strike>@Model.Price</strike> VNĐ</h6>
-            <h5>@Model.PromotionPrice VNĐ</h5>
+            <h6><strike>@Model.Price.Value.ToString("N0")</strike> VNĐ</h6>
+            <h5>@Model.PromotionPrice.Value.ToString("N0") VNĐ</h5>
         }
         else
         {
-            <h6>@Model.Price VNĐ</h6>
+            <h6>@Model.Price.Value.ToString("N0") VNĐ</h6>
         }
 
     </div>

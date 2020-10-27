@@ -111,7 +111,7 @@ namespace Model.Dao
                 procduct.TopHot = procduct.TopHot;
                 procduct.MoreImages = procduct.MoreImages;
                 procduct.IdSupplier = entity.IdSupplier;
-                procduct.Status = entity.Status;
+                procduct.Status = true;
                 procduct.CreateDay = entity.CreateDay;
                 db.SaveChanges();
                 return true;

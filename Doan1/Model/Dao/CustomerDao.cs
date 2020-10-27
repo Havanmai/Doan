@@ -51,6 +51,44 @@ namespace Model.Dao
             }
 
         }
+        public bool CheckUserName(string userName)
+        {
+            return db.Customers.Count(x => x.UserName == userName) > 0;
+        }
+        public bool CheckEmail(string email)
+        {
+            return db.Customers.Count(x => x.Email == email) > 0;
+        }
+        public Customer GetById(string userName)
+        {
+            return db.Customers.SingleOrDefault(x => x.UserName == userName);
+        }
+        public int Login(string userName, string passWord)
+        {
+            var result = db.Customers.SingleOrDefault(x => x.UserName == userName);
+            if (result == null)
+            {
+                return 0;
 
+            }
+            else
+            {
+                if (result.Status == false)
+                {
+                    return -1;
+                }
+                else
+                {
+                    if (result.Password == passWord)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return -2;
+                    }
+                }
+            }
+        }
     }
 }

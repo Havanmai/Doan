@@ -1,4 +1,6 @@
-﻿using Model.EF;
+﻿using Doan1.Common;
+using Doan1.Models;
+using Model.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +36,18 @@ namespace Doan1.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        [ChildActionOnly]
+        public PartialViewResult _ViewCart()
+        {
+            var cart = Session[CommonConstant.CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
+
+            return PartialView(list);
         }
     }
 }

@@ -8,6 +8,22 @@
 @section header{
     Thêm sản phẩm mới
 }
+@section jsFooter{
+    <script>
+        //$('#btnSelectImage').on('click', function (e) {
+        //    e.preventDefault();
+        //    var finder = new CKFinder();
+        //    finder.selectActionFunction = function (url) {
+        //        $('#txtImage').val(url);
+        //    };
+        //    finder.popup();
+        //})
+
+        var editor = CKEDITOR.replace('txtDetail', {
+            customConfig: '/Assets/admin/js/plugins/ckeditor/config.js',
+        });
+    </script>
+}
 
 @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -17,10 +33,11 @@
         <h4>Thông tin sản phẩm mới</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
         <div class="form-group">
             @Html.Label("Tên sản phẩm ", htmlAttributes: new { @class = "control-label col-md-10" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.NameProduct, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.NameProduct)
                 @Html.ValidationMessageFor(model => model.NameProduct, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,7 +45,7 @@
         <div class="form-group">
             @Html.Label("Mô tả", htmlAttributes: new { @class = "control-label col-md-10" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Decription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Decription)
                 @Html.ValidationMessageFor(model => model.Decription, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -58,7 +75,7 @@
         <div class="form-group">
             @Html.Label("Giá sản phẩm", htmlAttributes: new { @class = "control-label col-md-10" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Price)
                 @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -74,23 +91,23 @@
         <div class="form-group">
             @Html.Label("Số lượng", htmlAttributes: new { @class = "control-label col-md-10" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Quantity)
                 @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.Label("Mô tả chi tiết sản phẩm ", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Mô tả chi tiết sản phẩm ")
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" },  })
+               
             </div>
         </div>
 
         <div class="form-group">
             @Html.Label("Mã code sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Code)
                 @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -98,7 +115,7 @@
         <div class="form-group">
             @Html.Label("Ngày tạo", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.CreateDay, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.CreateDay)
                 @Html.ValidationMessageFor(model => model.CreateDay, "", new { @class = "text-danger" })
             </div>
         </div>

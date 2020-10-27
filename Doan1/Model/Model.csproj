@@ -87,6 +87,8 @@
     <Compile Include="Dao\CustomerDao.cs" />
     <Compile Include="Dao\HomeDao.cs" />
     <Compile Include="Dao\ImageProductDao.cs" />
+    <Compile Include="Dao\OrderDao.cs" />
+    <Compile Include="Dao\OrderDetailDao.cs" />
     <Compile Include="Dao\ProductDao.cs" />
     <Compile Include="Dao\SizeDao.cs" />
     <Compile Include="Dao\StaffDao.cs" />

@@ -26,12 +26,12 @@
             <h2>Tên sản phẩm: @Model.ProductDetail.NameProduct</h2>
             @if (@Model.ProductDetail.PromotionPrice != null)
             {
-                <h3>Giá sản phẩm: <strike>@Model.ProductDetail.Price <i>VND</i></strike></h3>
-                <h3>Giá ưu đãi: @Model.ProductDetail.PromotionPrice <i>VND</i></h3>
+                <h3>Giá sản phẩm: <strike>@Model.ProductDetail.Price.Value.ToString("N0") <i>VND</i></strike></h3>
+                <h3>Giá ưu đãi: @Model.ProductDetail.PromotionPrice.Value.ToString("N0") <i>VND</i></h3>
             }
             else
             {
-                <h3>Giá sản phẩm: @Model.ProductDetail.Price <i>VND</i></h3>
+        <h3>Giá sản phẩm: @Model.ProductDetail.Price.Value.ToString("N0") <i>VND</i></h3>
             }
 
             @*<h6>Giá ưu đãi: @Model.ProductDetail.PromotionPrice</h6>*@
@@ -42,18 +42,19 @@
                 <div class="buttons_added">
                     <span style="margin-right:50px;">Số lượng :</span> 
                     <input class="minus is-form" type="button" value="-">
-                    <input aria-label="quantity" class="input-qty" max="@Model.ProductDetail.Quantity" min="1" id="txtQuantity" type="number" value="1" >
+                    <input aria-label="quantity" class="input-qty" max="@Model.ProductDetail.Quantity" min="1" id="txtQuantity" name="Quantity" type="number" value="1" >
                     <input class="plus is-form" type="button" value="+" style="margin-right:20px;">
                 </div>
 
                 @Model.ProductDetail.Quantity sản phẩm có sẵn
             </p>
             <br/>
+    
             <div style="float:right">
-                <button class="btn btn-primary" style="margin-left:150px;"> Thêm giỏ hàng</button>
+                <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("AddToCart", "Cart")'+'?productId='+@Model.ProductDetail.IdProduct+'&quantity='+$('#txtQuantity').val()" style="margin-left:150px;"> Thêm giỏ hàng</button>
 
-                <button class="btn btn-danger" style="margin-left:20px; margin-right:150px;"> 
-                     @Html.ActionLink(" Mua hàng", "AddItem", "Cart", new { productId = @Model.ProductDetail.IdProduct, quantity =@"$('#txtQuantity').val()" },null) 
+                <button class="btn btn-danger" onclick="window.location.href = '@Url.Action("AddItem", "Cart")'+'?productId='+@Model.ProductDetail.IdProduct+'&quantity='+$('#txtQuantity').val()" style="margin-left:20px; margin-right:150px;"> 
+                 Mua hàng
                </button>
             </div>
 
@@ -64,7 +65,7 @@
             <h6>Mô tả <!--biến thành dạng giống mắt thường mình thấy--></h6>
         </div>
         <div class="col-sm-12">
-            @Html.Raw(Model.ProductDetail.Decription)
+            @Html.Raw(Model.ProductDetail.Detail)
         </div>
     </div>
 </div>

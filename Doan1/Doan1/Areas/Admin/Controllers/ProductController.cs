@@ -42,6 +42,7 @@ namespace Doan1.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create( Product product, HttpPostedFileBase[] imageList)
         {
             var dao0 = new SupplierDao();

@@ -27,7 +27,8 @@ namespace Model.EF
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<ImageProduct> ImageProducts { get; set; }
-        
+        public virtual DbSet<OrderStatus> OrderStatuss { get; set; }
+        public virtual DbSet<Status> Statuss { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Customer>()

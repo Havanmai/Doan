@@ -16,10 +16,15 @@ namespace Model.Dao
         }
         public long Insert(Order order)
         {
-            order.Status = 0;
+            order.Status = 1;
             db.Orders.Add(order);
             db.SaveChanges();
             return order.IdOrder;
         }
+        public List<Order> ListAllById(int status)
+        {
+            return db.Orders.Where(x => x.Status == status).OrderByDescending(x=>x.CreateDay).ToList();
+        }
     }
 }
+

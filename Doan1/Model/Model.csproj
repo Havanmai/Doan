@@ -89,6 +89,7 @@
     <Compile Include="Dao\ImageProductDao.cs" />
     <Compile Include="Dao\OrderDao.cs" />
     <Compile Include="Dao\OrderDetailDao.cs" />
+    <Compile Include="Dao\OrderStatusDao.cs" />
     <Compile Include="Dao\ProductDao.cs" />
     <Compile Include="Dao\SizeDao.cs" />
     <Compile Include="Dao\StaffDao.cs" />
@@ -104,12 +105,15 @@
     <Compile Include="EF\News.cs" />
     <Compile Include="EF\Order.cs" />
     <Compile Include="EF\OrderDetail.cs" />
+    <Compile Include="EF\OrderStatus.cs" />
     <Compile Include="EF\Product.cs" />
     <Compile Include="EF\Size.cs" />
     <Compile Include="EF\Staff.cs" />
+    <Compile Include="EF\Status.cs" />
     <Compile Include="EF\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CategoryViewWebModel.cs" />
+    <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModel\ProductViewWebModel.cs" />
   </ItemGroup>

@@ -38,19 +38,19 @@
                         </a>
                         <ul id="device-controls5" class="collapse" data-parent="#sidebar-nav">
                             <li>
-                                <a> @Html.ActionLink("Đơn hàng mới", "Index", "Supplier") </a>
+                                <a> @Html.ActionLink("Đơn hàng mới", "Index", "Order", new { status = 1 }, null) </a>
                             </li>
                             <li>
-                                <a>@Html.ActionLink("Đơn hàng đã duyệt", "Index", "Customer")</a>
+                                <a>@Html.ActionLink("Đơn hàng đã duyệt", "Index", "Order", new { status = 2 }, null)</a>
                             </li>
                             <li>
-                                <a>@Html.ActionLink("Đơn hàng đang giao", "Index", "Staff")</a>
+                                <a>@Html.ActionLink("Đơn hàng đang giao", "Index", "Order", new { status = 3 }, null)</a>
                             </li>
                             <li>
-                                <a>@Html.ActionLink("Đơn hàng đã hoàn thành", "Index", "Staff")</a>
+                                <a>@Html.ActionLink("Đơn hàng đã hoàn thành", "Index", "Order", new { status = 4 }, null)</a>
                             </li>
                             <li>
-                                <a>@Html.ActionLink("Đơn hàng đã hủy", "Index", "Staff")</a>
+                                <a>@Html.ActionLink("Đơn hàng đã hủy", "Index", "Order", new { status = 5 }, null)</a>
                             </li>
                         </ul>
                     </li>

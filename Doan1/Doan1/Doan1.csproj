@@ -138,6 +138,7 @@
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffController.cs" />
     <Compile Include="Areas\Admin\Controllers\SupplierController.cs" />
@@ -4801,6 +4802,7 @@
     <Content Include="Assets\admin\js\plugins\ckeditor\plugins\exportpdf\tests\manual\wrongendpoint.md" />
     <Content Include="Assets\admin\js\plugins\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Assets\admin\js\plugins\ckfinder\userfiles\.htaccess" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\fotorama-4.6.4\example.html" />
     <Content Include="Scripts\fotorama-4.6.4\fotorama%402x.png" />

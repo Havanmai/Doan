@@ -6,13 +6,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using Doan1.Common;
 
 namespace Doan1.Areas.Admin.Controllers
 {
     public class StaffController : Controller
     {
         // GET: Admin/Staff
-
+        [HasCredential(IdRole = "VIEW_STAFF")]
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
            var dao = new StaffDao();
@@ -22,6 +23,7 @@ namespace Doan1.Areas.Admin.Controllers
         }
 
         [HttpGet]// lấy giao diện
+        [HasCredential(IdRole = "EDIT_STAFF")]
         public ActionResult Create()
         {
             return View();
@@ -69,6 +71,7 @@ namespace Doan1.Areas.Admin.Controllers
             return View("Index");
         }
         [HttpDelete]
+        [HasCredential(IdRole = "DELETE_STAFF")]
         public ActionResult Delete(int id) 
         {
             var da1o = new StaffDao().Delete(id);

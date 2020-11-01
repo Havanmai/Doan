@@ -21,7 +21,7 @@ namespace Model.EF
         public virtual int? IdStaff { get; set; }
 
         [StringLength(50)]
-        public virtual string Access { get; set; }
+        public  string IdGroup { get; set; }
 
         public virtual bool Status { get; set; }
     }

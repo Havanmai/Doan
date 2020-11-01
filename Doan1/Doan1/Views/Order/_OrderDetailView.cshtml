@@ -1,0 +1,20 @@
+﻿@model Doan1.Models.OrderItem
+<div> 
+    <div>
+        <div>@Model.OrderDetail.IdProduct</div>
+        <div><img src="~/Images/Product/@Model.Product.Image" width="100" /></div>
+        <div>@Model.Product.NameProduct</div>
+        <div>@Model.OrderDetail.Quantity</div>
+        <div>
+            @if (@Model.Product.PromotionPrice != null)
+            {
+
+        <p><strike> @Model.Product.Price.GetValueOrDefault(0).ToString("N0")</strike></p>
+                        <p>@Model.Product.PromotionPrice.GetValueOrDefault(0).ToString("N0")</p> }
+                                    else
+                                    {
+                        <p> @Model.Product.Price.GetValueOrDefault(0).ToString("N0") </p>            }
+            </div>
+    </div>
+ </div>
+      

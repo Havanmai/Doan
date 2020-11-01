@@ -29,12 +29,18 @@ namespace Model.EF
         public virtual DbSet<ImageProduct> ImageProducts { get; set; }
         public virtual DbSet<OrderStatus> OrderStatuss { get; set; }
         public virtual DbSet<Status> Statuss { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<GroupAccount> GroupAccounts { get; set; }
+        public virtual DbSet<Credential> Credentials { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Customer>()
             //    .Property(e => e.Status)
             //    .IsFixedLength();
 
+            modelBuilder.Entity<Order>()
+                .Property(e => e.Total)
+                .HasPrecision(18, 0);
             modelBuilder.Entity<OrderDetail>()
                 .Property(e => e.Price)
                 .HasPrecision(18, 0);

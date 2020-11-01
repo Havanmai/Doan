@@ -260,3 +260,5 @@ D:\Doan\Doan1\Doan1\obj\Debug\Doan1.csproj.CoreCompileInputs.cache
 D:\Doan\Doan1\Doan1\obj\Debug\Doan1.csproj.CopyComplete
 D:\Doan\Doan1\Doan1\obj\Debug\Doan1.dll
 D:\Doan\Doan1\Doan1\obj\Debug\Doan1.pdb
+D:\Doan\Doan1\Doan1\bin\Common.dll
+D:\Doan\Doan1\Doan1\bin\Common.pdb

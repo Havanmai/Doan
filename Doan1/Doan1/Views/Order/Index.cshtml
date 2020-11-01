@@ -1,0 +1,33 @@
+﻿@model Model.ViewModel.OrderViewViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="display: flex; width:100%; ">
+    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px; font-size:16px;border:none;">
+        <a href="#" style="text-decoration: none;">Tất cả đơn hàng</a>
+    </button>
+    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px;font-size:16px;border:none;">
+        <a href="#" style="text-decoration: none;">Chờ xác nhận</a>
+    </button>
+    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px;font-size:16px;border:none;">
+        <a href="#" style="text-decoration: none;">Xác nhận</a>
+    </button>
+    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px;font-size:16px;border:none;">
+        <a href="#" style="text-decoration: none;">Đang giao</a>
+    </button>
+    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px;font-size:16px;border:none;">
+        <a href="#" style="text-decoration: none;"> Hoàn thành</a>
+    </button>
+    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px;font-size:16px;border:none;">
+        <a href="#" style="text-decoration: none;">Đã Hủy</a>
+    </button>
+</div>
+<div >
+    @foreach (var item in Model.OrderList)
+    {
+        <div class="col">
+            @Html.Partial("_OrderView", item)
+        </div>
+    }
+</div>

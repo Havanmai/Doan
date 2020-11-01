@@ -24,7 +24,7 @@ namespace Model.Dao
             db.SaveChanges();
             return entity.IdProduct;
         }
-        public List<ProductViewModel> ListAllById(int idCategory= 0, int idColor = 0,int idSize = 0, int idSupplier = 0)
+        public List<ProductViewModel> ListAllById(int idCategory = 0, int idColor = 0, int idSize = 0, int idSupplier = 0)
         {
             try
             {
@@ -74,23 +74,23 @@ namespace Model.Dao
              .ToList(); //danh sach product
                 return query;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
-             
+
         }
         public Product ViewDetail(long id)
         {
-            return  db.Products.Find(id);
-            
+            return db.Products.Find(id);
+
         }
         public List<Product> ListAll()
         {
-            return db.Products.Where(x=>x.Status!=false).ToList();
+            return db.Products.Where(x => x.Status != false).ToList();
 
         }
-       
+
         public bool Update(Product entity)
         {
 
@@ -121,6 +121,25 @@ namespace Model.Dao
                 return false;
             }
 
+
+
+        }
+        public bool Update1(Product entity)
+        {
+
+            try
+            {
+                var procduct = db.Products.Find(entity.IdProduct);
+
+                procduct.Quantity = entity.Quantity;
+
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

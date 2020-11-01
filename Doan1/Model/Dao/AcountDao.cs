@@ -21,6 +21,25 @@ namespace Model.Dao
             return entity.IdAccount;
 
         }
+        public List<string> GetListCredential(string userName)
+        {
+            var user = db.Account.Single(x => x.Username == userName);
+            var data = (from a in db.Credentials
+                        join b in db.GroupAccounts on a.IdGroup equals b.IdGroup
+                        join c in db.Roles on a.IdRole equals c.IdRole
+                        where b.IdGroup == user.IdGroup
+                        select new
+                        {
+                            IdRole = a.IdRole,
+                            IdGroup = a.IdGroup
+                        }).AsEnumerable().Select(x => new Credential()
+                        {
+                            IdRole = x.IdRole,
+                            IdGroup = x.IdGroup
+                        });
+            return data.Select(x => x.IdRole).ToList();
+
+        }
         public Account GetByID(string userName)
         {
             return db.Account.SingleOrDefault(x => x.Username == userName);

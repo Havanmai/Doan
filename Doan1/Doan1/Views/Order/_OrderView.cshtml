@@ -1,0 +1,11 @@
+﻿@model Model.ViewModel.OrderViewViewModel
+
+@{ string urlOrder = "/Order/Detail/" + Model.OrderDetail.IdProduct; }
+<div>
+    @foreach (var item in Model.OrderDetailList)
+    {
+<div >
+    @Html.Partial("_OrderDetailView", item)
+</div>
+    }
+</div>

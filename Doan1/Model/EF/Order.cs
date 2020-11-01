@@ -38,5 +38,6 @@ namespace Model.EF
         public string Note { get; set; }
 
         public int? Status { get; set; }
+        public decimal? Total { get; set; }
     }
 }

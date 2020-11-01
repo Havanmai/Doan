@@ -1,0 +1,27 @@
+﻿@model Model.EF.Product
+@{
+    string urlProduct = "/Product/Detail/" + Model.IdProduct;
+}
+<div class="card h-100">
+    <a href="@urlProduct"><img class="card-img-top" src="~/Images/Product/@Model.Image" style="height:250px; width:100%;" title="Click vào đây để xem chi tiết!" alt="@Model.NameProduct"></a>
+    <div class="card-body">
+        <h4 class="card-title">
+            <a style="text-decoration:none" href="@urlProduct">@Model.NameProduct</a>
+        </h4>
+        @if (@Model.PromotionPrice != null)
+        {
+            <h6><strike>@Model.Price.Value.ToString("N0")</strike> VNĐ</h6>
+            <h5>@Model.PromotionPrice.Value.ToString("N0") VNĐ</h5>
+        }
+        else
+        {
+            <h6>@Model.Price.Value.ToString("N0") VNĐ</h6>
+        }
+
+    </div>
+    <div class="card-footer" style="text-align:center">
+        @*<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>*@
+        <a href="@urlProduct" style="text-decoration: none"><em>Xem chi tiết</em></a>
+    </div>
+</div>
+

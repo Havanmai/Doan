@@ -209,7 +209,7 @@ namespace Doan1.Controllers
                 var id = new OrderDao().Insert(order);
                 var cart = (List<CartItem>)Session[CartSession];
                 var detailDao = new Model.Dao.OrderDetailDao();
-                
+                var productDao = new ProductDao();
                 decimal total = 0;
                 foreach (var item in cart)
                 {
@@ -219,6 +219,11 @@ namespace Doan1.Controllers
                     orderDetail.Price = item.Product.Price;
                     orderDetail.Quantity = item.Quantity;
                     detailDao.Insert(orderDetail);
+                    var product = new Product();
+                    product.IdProduct = item.Product.IdProduct;
+                    product.Quantity = (item.Product.Quantity - item.Quantity);
+                    productDao.Update1(product);
+
 
                     total += (item.Product.Price.GetValueOrDefault(0) * item.Quantity);
                     
@@ -229,6 +234,10 @@ namespace Doan1.Controllers
                 orderStatus.UpdateDay = DateTime.Now;
                 var orderStatusDao = new OrderStatusDao();
                 orderStatusDao.Insert(orderStatus);
+
+                order.Total = total;
+                new OrderDao().Update(order);
+
 
                 //string content = System.IO.File.ReadAllText(Server.MapPath("~/Assets/client/template/neworder.html"));
 

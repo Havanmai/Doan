@@ -10,5 +10,6 @@ namespace Doan1.Common
     {
         public long IdAccount { set; get; }
         public string Username { set; get; }
+        public string IdGroup { set; get; }
     }
 }

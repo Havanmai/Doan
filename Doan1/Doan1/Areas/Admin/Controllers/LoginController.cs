@@ -28,6 +28,10 @@ namespace Doan1.Areas.Admin.Controllers
                     var accSession = new AccountLogin();
                     accSession.Username = account.Username;
                     accSession.IdAccount = account.IdAccount;
+                    accSession.IdGroup = account.IdGroup;
+                    var listCredentials = dao.GetListCredential(model.Username);
+
+                    Session.Add(CommonConstant.SESSION_CREDENTIALS, listCredentials);
                     Session.Add(CommonConstant.USER_SESSION, accSession);
                     return RedirectToAction("Index", "Home");
                 }

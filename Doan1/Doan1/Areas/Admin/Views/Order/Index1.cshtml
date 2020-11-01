@@ -1,0 +1,188 @@
+﻿@model List<Model.EF.Order>
+
+@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Danh sách đơn đặt hàng
+    } 
+<!-- stylesheet lazy init -->
+<link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table id="dt_main" class="table  table-condensed table-striped table-bordered " style="border-collapse:collapse;">
+    <thead>
+        <tr>
+
+            <th style="border: 1px solid #ccc;">
+                STT
+            </th>
+            <th style="border: 1px solid #ccc;">
+                Mã đơn hàng
+            </th>
+            <th style="border: 1px solid #ccc;">
+                Mã khách hàng
+            </th>
+
+            <th style="border: 1px solid #ccc;">
+                Tên khách hàng nhận
+            </th>
+            <th style="border: 1px solid #ccc;">
+                Số điện thoại nhận
+            </th>
+            <th style="border: 1px solid #ccc;">
+                Địa chỉ nhận
+            </th>
+            <th style="border: 1px solid #ccc;">
+                Ngày đặt hàng
+            </th>
+            <th style="border: 1px solid #ccc;">
+                Ngày giao dự kiến
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.CompleteData)
+        </th>*@
+            <th style="border: 1px solid #ccc;">
+                Địa chỉ mail người nhận
+            </th>
+            <th style="border: 1px solid #ccc;">
+                Tổng giá trị đơn hàng
+            </th>
+            <th style="border: 1px solid #ccc;">
+                Trạng thái đơn hàng
+            </th>
+            <th style="border: 1px solid #ccc;">
+                Ghi chú
+            </th>
+            @*<th style="border: 1px solid #ccc;">
+            @Html.DisplayNameFor(model => model.Status)
+        </th>*@
+            <th style="border: 1px solid #ccc; width:350px;">
+                Xử lý
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+
+            // Cai nay nen dung foreach
+            var item = Model[i];
+        <tr>
+            <td style="border: 1px solid #ccc;">
+                @(i+1)
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @item.IdOrder
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @item.IdCustomer
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.IdStaff)
+        </td>*@
+            <td style="border: 1px solid #ccc;">
+                @item.ShipName
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @item.ShipMoblie
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @item.ShipAddress
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @item.CreateDay
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @item.PlanDay
+            </td>
+            @*<td>
+            @item.CompleteData)
+        </td>*@
+            <td style="border: 1px solid #ccc;">
+                @item.ShipEmail
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @item.Total
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @if (@item.Status == 1)
+                {
+                    <p>Đơn hàng mới</p>
+                }
+                else if (@item.Status == 2)
+                {
+                    <p>Đã duyệt</p>
+                }
+                else if (@item.Status == 3)
+                {
+                    <p>Đang giao</p>
+                }
+                else if (@item.Status == 4)
+                {
+                    <p>Hoàn thành</p>
+                }
+                else if (@item.Status == 5)
+                {
+                    <p>Đã hủy</p>
+                }
+            </td>
+            <td style="border: 1px solid #ccc;">
+                @item.Note
+            </td>
+            @*<td style="border: 1px solid #ccc;">
+            @item.Status
+        </td>*@
+        <td style="border: 1px solid #ccc;">
+            @if (@item.Status == 5)
+            {
+                <button class="btn btn-info">
+                    @Html.ActionLink("Chi tiết", "Detail", new { id = @item.IdOrder })
+                </button>
+            }
+            else
+            {
+                <button class="btn btn-warning">
+                    @Html.ActionLink("Thêm lưu ý", "Edit", new { id = @item.IdOrder })
+                </button>
+                <button class="btn btn-info">
+                    @Html.ActionLink("Chi tiết", "Detail", new { id = @item.IdOrder })
+                </button>
+                <button class="btn btn-danger">
+                    @Html.ActionLink("Hủy", "Delete", new { id = @item.IdOrder })
+                </button>
+            }
+
+
+        </td>
+        </tr>
+
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script>
+        $.fn.dataTable.defaults.oLanguage = Object.assign($.fn.dataTable.defaults.oLanguage, {
+            sSearch: 'Tìm kiếm: &nbsp;/',
+            sEmptyTable: 'Không có bản ghi nào',
+            sLengthMenu: 'Xem _MENU_ bản ghi',
+            sZeroRecords: '<center>Không thấy bản ghi nào phù hợp</center>',
+            sInfo: 'Hiển thị _START_ đến _END_ trong tổng số _TOTAL_',
+            oPaginate: {
+                sFirst: 'Đầu tiên',
+                sLast: 'Cuối cùng',
+                sNext: 'Trang tiếp',
+                sPrevious: 'Trang trước'
+            }
+        });
+        $('#dt_main').dataTable({
+            lengthMenu: [[10, 20, 40, -1], [10, 20, 40, "Tất cả"]],
+            pageLength: 20
+        });
+    </script>
+}

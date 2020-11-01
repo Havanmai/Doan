@@ -25,5 +25,6 @@
         
         [StringLength(250)]
         public string Decription { get; set; }
+        public long IdStaff { get; set; }
     }
 }

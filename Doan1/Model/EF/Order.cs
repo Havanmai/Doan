@@ -14,7 +14,7 @@ namespace Model.EF
 
         public long? IdCustomer { get; set; }
 
-        public int? IdStaff { get; set; }
+        
 
         [StringLength(250)]
         public string ShipName { get; set; }

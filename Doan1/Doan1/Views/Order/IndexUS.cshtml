@@ -1,0 +1,83 @@
+﻿@model List<Model.EF.Order>
+
+@{
+    ViewBag.Title = "IndexUS";
+    Layout = "~/Views/Shared/_OrderLayout.cshtml";
+}
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Mã đơn hàng
+        </th>
+
+        <th>
+            Tên người nhận
+        </th>
+        <th>
+            SDT
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Ngày tạo
+        </th>
+        <th>
+            Ngày giao ướng tính
+        </th>
+
+       
+        <th>
+            Ghi chú
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Tổng tiền
+        </th>
+        <th> Xử lý</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipMoblie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlanDay)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            <button class="btn btn-warning">
+                @Html.ActionLink("Xem chi tiết", "Detail", "Order", new { id = item.IdOrder }, null)
+            </button>
+        </td>
+    </tr>
+}
+
+</table>

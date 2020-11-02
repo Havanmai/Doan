@@ -1,34 +1,116 @@
-﻿@model List<Model.ViewModel.OrderViewViewModel>
+﻿@model List<Model.ViewModel.OrderViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_OrderLayout.cshtml";
 }
-@*<div style="display: flex; width:100%; ">
-    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px; font-size:16px;border:none;">
-        <a href="#" style="text-decoration: none;">Tất cả đơn hàng</a>
-    </button>
-    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px;font-size:16px;border:none;">
-        <a href="#" style="text-decoration: none;">Chờ xác nhận</a>
-    </button>
-    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px;font-size:16px;border:none;">
-        <a href="#" style="text-decoration: none;">Xác nhận</a>
-    </button>
-    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px;font-size:16px;border:none;">
-        <a href="#" style="text-decoration: none;">Đang giao</a>
-    </button>
-    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px;font-size:16px;border:none;">
-        <a href="#" style="text-decoration: none;"> Hoàn thành</a>
-    </button>
-    <button style="display: flex; width:300px;background:#fff; height:50px;margin-top:30px;font-size:16px;border:none;">
-        <a href="#" style="text-decoration: none;">Đã Hủy</a>
-    </button>
-</div>*@
+
 
 <div>
-    @foreach (var item in Model.OrderList)
+    @foreach (var item in Model)
     {
-        <div class="col">
-            @Html.Partial("_OrderView", item)
+        <br />
+        <br />
+        <br />
+        <div style="border: 1px solid #ccc; background: #93a8b4">
+
+            <div style="float:right; display:flex; ">
+                Ngày đặt hàng: &nbsp; @item.CreateDay &nbsp;|&nbsp;
+                Mã đơn hàng:&nbsp; @item.IdOrder &nbsp;|&nbsp;
+
+                @if (@item.Status == 1)
+                {
+                    <p style="color:blue;">Đơn hàng mới</p>
+                }
+                else if (@item.Status == 2)
+                {
+                    <p style="color:blue;">Đã duyệt</p>
+                }
+                else if (@item.Status == 3)
+                {
+                    <p style="color:blue;">Đang giao</p>
+                }
+                else if (@item.Status == 4)
+                {
+                    <p style="color:blue;">Hoàn thành</p>
+                }
+                else if (@item.Status == 5)
+                {
+                    <p style="color:blue;">Đã hủy</p>
+                }
+            </div>
+            <br />
+            <br />
+
+            <table class="table table-condensed table-striped table-bordered " style="border-collapse:collapse;">
+                <thead>
+                    <tr>
+
+                        <th style="border: 1px solid #ccc;">Mã sản phẩm</th>
+                        <th style="border: 1px solid #ccc;">Tên sản phẩm</th>
+                        <th style="border: 1px solid #ccc;">Ảnh sản phẩm</th>
+                        <th style="border: 1px solid #ccc;">Số lượng</th>
+                        <th style="border: 1px solid #ccc;">Đơn giá</th>
+                        <td style="border: 1px solid #ccc;">Xem chi tiết</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr></tr>
+
+                    @*@if(item.IdOrder)
+                        @foreach (var iem in Model)
+                        {*@
+                    <tr>
+
+                        <td style="border: 1px solid #ccc;">@item.IdProduct</td>
+                        <td style="border: 1px solid #ccc;">
+                            @item.NameProduct
+
+                        </td>
+                        <td style="border: 1px solid #ccc;"><img src="~/Images/Product/@item.Image" width="100" /></td>
+
+                        <td style="border: 1px solid #ccc;">@item.Quantity</td>
+                        <td style="border: 1px solid #ccc;">
+                            @if (@item.PromotionPrice != null)
+                            {
+
+                                <p><strike> @item.Price.GetValueOrDefault(0).ToString("N0")</strike></p>
+                                <p>@item.PromotionPrice.GetValueOrDefault(0).ToString("N0")</p> }
+                            else
+                            {
+                                <p> @item.Price.GetValueOrDefault(0).ToString("N0") </p>}
+                        </td>
+                        <td style="border: 1px solid #ccc;"></td>
+                    </tr>
+                    @*}*@
+                    <tr style="border: 1px solid #ccc;">
+                        <td></td>
+                        <td></td>
+                        <td>
+                            Tổng tiền
+                        </td>
+                        <td></td>
+                        <td style="border: 1px solid #ccc;">
+                            @item.Total.GetValueOrDefault(0).ToString("N0") &nbsp;<i>VND</i>
+                        </td>
+                        <td style="border: 1px solid #ccc;">
+                            <button class="btn btn-warning">
+                                @Html.ActionLink("Xem chi tiết", "Detail", "Order", new { id = item.IdOrder }, null)
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <br />
+
+            <div>
+                Ngày hẹn giao trước : @item.PlanDay
+            </div>
+            <br />
+
         </div>
     }
 </div>
+
+

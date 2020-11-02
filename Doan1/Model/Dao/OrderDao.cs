@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +27,9 @@ namespace Model.Dao
             return db.Orders.OrderByDescending(x => x.CreateDay).ToList();
         }
        
-        
-        public List<Order> ListAllById(int status)
+        public List<Order> ListAllById(int status,long id)
         {
-            return db.Orders.Where(x => x.Status == status).OrderByDescending(x => x.CreateDay).ToList();
+            return db.Orders.Where(x => x.Status == status && x.IdCustomer==id).OrderByDescending(x => x.CreateDay).ToList();
         }
         public bool Update(Order entity)
         {
@@ -98,6 +98,53 @@ namespace Model.Dao
             {
                 return false;
             }
+        }
+        public List<OrderViewModel> ListAllOrderById(long id)
+        {
+            try
+            {
+                List<OrderViewModel> query = (from a in db.Orders
+                                                  join b in db.OrderDetails on a.IdOrder equals b.IdOrder
+                                                join c in db.OrderStatuss on a.IdOrder equals c.IdOrder
+                                                join d in db.Products on b.IdProduct equals d.IdProduct
+                                                select new //chp nay ba tim dong code select * 
+                                                {
+                                                    d.IdProduct,
+                                                    d.NameProduct,
+                                                    d.Image,
+                                                    d.Price,
+                                                    d.PromotionPrice,
+                                                    b.Quantity,
+                                                   a.IdOrder,
+                                                   a.Status,
+                                                   a.IdCustomer,
+                                                   a.PlanDay,
+                                                   a.Total,
+                                                   a.CreateDay
+                                                }).AsEnumerable().Select(x => new OrderViewModel
+                                                {
+                                                    IdProduct=x.IdProduct,
+                                                    NameProduct = x.NameProduct,
+                                                    Image = x.Image,
+                                                    Price = x.Price,
+                                                    PromotionPrice = x.PromotionPrice,
+                                                    Quantity = x.Quantity,
+                                                    IdOrder = x.IdOrder,
+                                                    Status = x.Status,
+                                                    IdCustomer = x.IdCustomer,
+                                                    PlanDay = x.PlanDay,
+                                                    Total=x.Total,
+                                                    CreateDay = x.CreateDay
+                                                })
+             .Where(n=>n.IdCustomer==id).OrderBy(g => g.CreateDay) // sap xep 
+             .ToList(); //danh sach product
+                return query;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

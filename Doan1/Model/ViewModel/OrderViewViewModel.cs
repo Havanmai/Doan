@@ -18,5 +18,6 @@ namespace Model.ViewModel
 
         public Status Status { get; set; }
         public Product Product { get; set; }
+        public List<OrderViewModel> OrderViewModelList { get; set; }
     }
 }

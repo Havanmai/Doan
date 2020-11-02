@@ -13,8 +13,6 @@ namespace Doan1.Models
         public OrderDetail OrderDetail { get; set; }
 
         public OrderStatus OrderStatus { get; set; }
-
-        public Status Status { get; set; }
         public Product Product { get; set; }
     }
 }

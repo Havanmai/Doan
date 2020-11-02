@@ -113,22 +113,26 @@
     <main>
         <div class="container body-content" style="margin-top:100px; background:#fff;min-height:1000px;">
             <div>
+               
                 <nav class="navbar navbar-expand-sm bg-light navbar-light">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#" style="width:250px;">Tất cả đơn hàng</a>
+                            <a class="nav-link" href="#" style="width:200px;">@Html.ActionLink("Tất cả đơn hàng", "Index", "Order")</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="width:250px;">Chờ xác nhận</a>
+                            <a class="nav-link" href="#" style="width:200px;">@Html.ActionLink("Chờ xác nhận", "IndexUS", "Order", new { status = 1 }, null)</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="width:250px;">Đang giao</a>
+                            <a class="nav-link" href="#" style="width:200px;">@Html.ActionLink("Xác nhận", "IndexUS", "Order", new { status = 2 }, null)</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="width:250px;">Hoàn thành</a>
+                            <a class="nav-link" href="#" style="width:200px;">@Html.ActionLink("Đang giao", "IndexUS", "Order", new { status = 3 }, null)</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="width:250px;">Đã Hủy</a>
+                            <a class="nav-link" href="#" style="width:200px;">@Html.ActionLink("Hoàn thành", "IndexUS", "Order", new { status = 4 }, null)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="width:200px;">@Html.ActionLink("Đã Hủy", "IndexUS", "Order", new { status = 5 }, null)</a>
                         </li>
                     </ul>
                 </nav>

@@ -13,13 +13,13 @@ namespace Doan1.Areas.Admin.Controllers
     {
 
         // GET: Admin/Order
-        public ActionResult Index(int status)
-        {
-            var dao = new OrderDao();
-            ViewBag.Status = status;
-            var model = dao.ListAllById(status);
-            return View(model);
-        }
+        //public ActionResult Index(int status)
+        //{
+        //    var dao = new OrderDao();
+        //    ViewBag.Status = status;
+        //    var model = dao.ListAllById(status);
+        //    return View(model);
+        //}
         public ActionResult Index1()
         {
             var dao = new OrderDao();

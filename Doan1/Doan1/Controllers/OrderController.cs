@@ -1,4 +1,6 @@
-﻿using Model.EF;
+﻿using Doan1.Models;
+using Model.Dao;
+using Model.EF;
 using Model.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -14,14 +16,20 @@ namespace Doan1.Controllers
         public ActionResult Index()
         {
             var session = (Doan1.Common.AccountLogin)Session[Doan1.Common.CommonConstant.USER_SESSION];
-            OrderViewViewModel model = new OrderViewViewModel();
-            using (var db = new DoanDbContext())
-            { // phải using System.Linq;
-                
-                model.OrderList = db.Orders.Where(x => x.IdCustomer == session.IdAccount).OrderByDescending(x=>x.CreateDay).ToList();
-            }
+            var dao = new OrderDao();
+            var list = dao.ListAllOrderById(session.IdAccount);
+
+            return View(list);
+        }
+
+        public ActionResult IndexUS(int status)
+        {
+            var session = (Doan1.Common.AccountLogin)Session[Doan1.Common.CommonConstant.USER_SESSION];
+            var dao = new OrderDao();
+            var model = dao.ListAllById(status,session.IdAccount);
             return View(model);
         }
+
         public ActionResult Detail(long id)
         {
             OrderViewViewModel model = new OrderViewViewModel();

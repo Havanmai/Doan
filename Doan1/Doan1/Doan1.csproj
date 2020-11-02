@@ -4853,12 +4853,12 @@
     <Content Include="Views\Cart\Success.cshtml" />
     <Content Include="Views\Shared\_ViewCart.cshtml" />
     <Content Include="Views\Customer\Login.cshtml" />
-    <Content Include="Views\Order\Index.cshtml" />
-    <Content Include="Views\Order\_OrderDetailView.cshtml" />
-    <Content Include="Views\Order\_OrderView.cshtml" />
     <Content Include="Views\Category\_ProductView.cshtml" />
     <Content Include="Views\Shared\_OrderLayout.cshtml" />
-    <Content Include="Views\Order\l2.cshtml" />
+    <Content Include="Views\Order\Detail.cshtml" />
+    <Content Include="Views\Order\_OrderView.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\IndexUS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

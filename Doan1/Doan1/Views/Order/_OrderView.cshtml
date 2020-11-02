@@ -1,11 +1,15 @@
-﻿@model Model.ViewModel.OrderViewViewModel
+﻿@model  Model.ViewModel.OrderViewViewModel
 
-@{ string urlOrder = "/Order/Detail/" + Model.OrderDetail.IdProduct; }
-<div>
-    @foreach (var item in Model.OrderDetailList)
-    {
-<div >
-    @Html.Partial("_OrderDetailView", item)
-</div>
-    }
-</div>
+        <div class="row">
+
+            @foreach (var item in Model.OrderList)
+            {
+                    <div >
+                     @Html.Partial("_OrderDetailView", item,new ViewDataDictionary { {"tt",Model } });
+                        </div>            
+             }
+
+        </div>
+        <!-- /.row -->
+
+

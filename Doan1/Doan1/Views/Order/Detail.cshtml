@@ -1,0 +1,168 @@
+﻿@model Model.ViewModel.OrderViewViewModel
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content">
+    <h1 style="color:blue;">Thông tin chi tiết đơn hàng</h1>
+    <div class="section group">
+        <div style="float:right; display:flex;">
+            Ngày đặt hàng: &nbsp; @Model.Order.CreateDay &nbsp;|&nbsp;
+            Mã đơn hàng:&nbsp; @Model.Order.IdOrder &nbsp;|&nbsp;
+
+            @if (@Model.Order.Status == 1)
+            {
+                <p style="color:blue;">Đơn hàng mới</p>
+            }
+            else if (@Model.Order.Status == 2)
+            {
+                <p style="color:blue;">Đã duyệt</p>
+            }
+            else if (@Model.Order.Status == 3)
+            {
+                <p style="color:blue;">Đang giao</p>
+            }
+            else if (@Model.Order.Status == 4)
+            {
+                <p style="color:blue;">Hoàn thành</p>
+            }
+            else if (@Model.Order.Status == 5)
+            {
+                <p style="color:blue;">Đã hủy</p>
+            }
+        </div>
+        <br />
+        <br />
+
+        <div style="border-bottom:1px solid #ccc; border-top:1px solid #ccc;">
+            <strong style="font-size:25px;">  Địa chỉ người nhận</strong>
+            <br />
+            <br />
+            <p>
+                Tên người nhận :&nbsp; @Model.Order.ShipName
+            </p>
+            <p>
+                SDT người nhận :&nbsp;  @Model.Order.ShipMoblie
+            </p>
+            <p>
+                Địa chỉ người nhận :&nbsp; @Model.Order.ShipAddress
+            </p>
+            <p>
+                Email người nhận : @Model.Order.ShipEmail
+            </p>
+
+        </div>
+        <br />
+        <br />
+        <div>
+            <strong>
+                Thời xử lý
+            </strong>
+            <div>
+                @foreach (var item in Model.OrderStatusList)
+                {
+                    <div style="display:flex;">
+                        @if (@item.IdStatus == 1)
+                        {
+                            <p style="color:blue;">Đơn hàng mới</p>
+                        }
+                        else if (@item.IdStatus == 2)
+                        {
+                            <p style="color:blue;">Đã duyệt</p>
+                        }
+                        else if (@item.IdStatus == 3)
+                        {
+                            <p style="color:blue;">Đang giao</p>
+                        }
+                        else if (@item.IdStatus == 4)
+                        {
+                            <p style="color:blue;">Hoàn thành</p>
+                        }
+                        else if (@item.IdStatus == 5)
+                        {
+                            <p style="color:blue;">Đã hủy</p>
+                        }
+                        &nbsp;| &nbsp;
+                        <p>@item.UpdateDay</p>
+                        &nbsp;| &nbsp;
+                        <p>Mã Nhân Viên thực hiện  : @item.IdStaff</p>
+                    </div>
+                }
+            </div>
+        </div>
+        <br />
+        <br />
+        <table class="table table-condensed table-striped table-bordered " style="border-collapse:collapse;">
+            <thead>
+                <tr>
+
+                    <th style="border: 1px solid #ccc;">Mã sản phẩm</th>
+                    <th style="border: 1px solid #ccc;">Tên sản phẩm</th>
+                    <th style="border: 1px solid #ccc;">Ảnh sản phẩm</th>
+                    <th style="border: 1px solid #ccc;">Số lượng</th>
+                    <th style="border: 1px solid #ccc;">Đơn giá</th>
+                    @*<td>Thành tiền</td>*@
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+
+                @foreach (var item in Model.OrderDetailList)
+                {
+                    <tr>
+
+                        <td style="border: 1px solid #ccc;">@item.IdProduct</td>
+                        <td style="border: 1px solid #ccc;">
+                            @Model.Product.NameProduct
+
+                        </td>
+                        <td style="border: 1px solid #ccc;"><img src="~/Images/Product/@Model.Product.Image" width="100" /></td>
+
+                        <td style="border: 1px solid #ccc;">@item.Quantity</td>
+                        <td style="border: 1px solid #ccc;">
+                            @if (@Model.Product.PromotionPrice != null)
+                            {
+
+                                <p><strike> @Model.Product.Price.GetValueOrDefault(0).ToString("N0")</strike></p>
+                                <p>@Model.Product.PromotionPrice.GetValueOrDefault(0).ToString("N0")</p> }
+                            else
+                            {
+                                <p> @Model.Product.Price.GetValueOrDefault(0).ToString("N0") </p>}
+                        </td>
+                    </tr>
+                }
+                <tr style="border: 1px solid #ccc;">
+                    <td></td>
+                    <td></td>
+                    <td>
+                        Tổng tiền
+                    </td>
+                    <td></td>
+                    <td style="border: 1px solid #ccc;">
+                        @Model.Order.Total.GetValueOrDefault(0).ToString("N0") &nbsp;<i>VND</i>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <br />
+
+        <div>
+            Ngày hẹn giao trước : @Model.Order.PlanDay
+        </div>
+        <br />
+        <div style="float:right;">
+           
+                <button class="btn btn-success"> @Html.ActionLink("Trở về", "Index", "Order") </button>
+           
+                @*<button class="btn btn-success"> @Html.ActionLink("Trở về", "Index1", "Order") </button>
+                <button class="btn btn-warning">  @Html.ActionLink("Xác nhận đơn hàng", "Update", "Order", new { id = Model.Order.IdOrder, status = Model.Order.Status }, null) </button>*@
+            
+
+        </div>
+    </div>
+</div>
+

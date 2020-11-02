@@ -7,8 +7,29 @@ using System.Threading.Tasks;
 
 namespace Model.ViewModel
 {
-    public partial class OrderViewModel
+    public  class OrderViewModel
     {
-        public Order Order { set; get; }
+        
+        public long IdProduct { get; set; }
+
+
+        public string NameProduct { get; set; }
+
+        public string Image { get; set; }
+
+
+        public decimal? Price { get; set; }
+        public decimal? Total { get; set; }
+        public decimal? PromotionPrice { get; set; }
+
+        public int? Quantity { get; set; }
+
+       
+
+        public DateTime? CreateDay { get; set; }
+        public long IdOrder { get; set; }
+        public long? IdCustomer { get; set; }
+        public int? Status { get; set; }
+        public DateTime? PlanDay { get; set; }
     }
 }
